@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soberania Digital | Consultoria Financeira</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Cores mais sóbrias e profissionais
+                        brand: {
+                            btc: '#F7931A', // Mantido, mas usado com parcimônia
+                            usdt: '#26A17B',
+                            dark: '#0F172A', // Slate 900 (Azul escuro profissional)
+                            surface: '#1E293B', // Slate 800
+                            border: '#334155', // Slate 700
+                        },
+                        success: '#10B981',
+                        danger: '#EF4444'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'glow': '0 0 15px rgba(247, 147, 26, 0.1)', // Glow muito sutil
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0F172A; /* Slate 900 Background */
+            color: #E2E8F0; /* Slate 200 Text */
+        }
+        
+        /* Gradiente de fundo sutil e elegante */
+        .hero-bg {
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0F172A 70%);
+        }
+
+        /* Cards profissionais: Borda fina, fundo sólido com leve transparência */
+        .pro-card {
+            background: rgba(30, 41, 59, 0.6); /* Slate 800 com opacidade */
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(148, 163, 184, 0.1); /* Borda muito sutil */
+            transition: all 0.3s ease;
+        }
+        
+        .pro-card:hover {
+            border-color: rgba(148, 163, 184, 0.2);
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        /* Inputs formulário style */
+        .input-field {
+            background-color: #0F172A;
+            border: 1px solid #334155;
+            transition: border-color 0.2s;
+        }
+        .input-field:focus {
+            border-color: #F7931A;
+            outline: none;
+        }
+
+        /* Scrollbar discreta */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F172A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans text-slate-300">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-[#0F172A]/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="bg-slate-800 p-2 rounded-lg border border-slate-700">
+                        <i class="fa-solid fa-layer-group text-brand-btc text-xl"></i>
+                    </div>
+                    <span class="font-semibold text-xl tracking-tight text-white">Soberania<span class="text-slate-400 font-light">Biz</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#dados" class="text-sm font-medium hover:text-white transition">Dados</a>
+                        <a href="#solucao" class="text-sm font-medium hover:text-white transition">Estratégia</a>
+                        <a href="#dre" class="text-sm font-medium hover:text-white transition">Simulador DRE</a>
+                        <a href="#seguranca" class="text-sm font-medium hover:text-white transition">Segurança</a>
+                        <a href="#contato" class="bg-white text-slate-900 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-slate-200 transition shadow-sm">
+                            Consultoria
+                        </a>
+                    </div>
+                </div>
+                <!-- Mobile Button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-slate-900 border-b border-slate-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#dados" class="block px-3 py-2 rounded-md text-base font-medium hover:text-white">Dados</a>
+                <a href="#dre" class="block px-3 py-2 rounded-md text-base font-medium hover:text-white">Simulador</a>
+                <a href="#contato" class="block w-full text-center bg-white text-slate-900 mt-4 px-5 py-3 rounded-md font-bold">Consultoria</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 hero-bg overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-700 bg-slate-800/50 mb-6">
+                        <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                        <span class="text-xs font-medium text-slate-300 uppercase tracking-wide">Relatório de Eficiência Financeira</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
+                        Liberte sua empresa da <br>
+                        <span class="text-red-400">Ineficiência Estatal.</span>
+                    </h1>
+                    
+                    <p class="mt-4 text-lg text-slate-400 leading-relaxed max-w-lg">
+                        Implementamos infraestrutura de pagamentos em <span class="text-white font-medium">Dólar Digital (USDT)</span> e Bitcoin. Elimine taxas de adquirência e proteja seu caixa da inflação local.
+                    </p>
+
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a href="#contato" class="px-8 py-3.5 bg-brand-btc hover:bg-yellow-600 text-white font-semibold rounded-lg transition shadow-soft text-center">
+                            Blindar Caixa
+                        </a>
+                        <a href="#dados" class="px-8 py-3.5 bg-transparent border border-slate-600 text-slate-300 font-medium rounded-lg hover:border-slate-400 hover:text-white transition text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-chart-pie"></i> Ver Dados
+                        </a>
+                    </div>
+                    
+                    <div class="mt-10 flex items-center gap-4 text-sm text-slate-500">
+                        <div class="flex items-center gap-1">
+                            <i class="fa-solid fa-check text-brand-usdt"></i>
+                            <span>Sem fidelidade</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fa-solid fa-check text-brand-usdt"></i>
+                            <span>Liquidez D+0</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fa-solid fa-check text-brand-usdt"></i>
+                            <span>Bank-Grade Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content: Floating Widget (More Clean) -->
+                <div class="relative hidden lg:block">
+                    <!-- Notification Card -->
+                    <div class="absolute top-10 right-10 bg-slate-800 border border-slate-700 p-4 rounded-xl shadow-2xl w-72 transform rotate-2 z-20">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-brand-usdt/10 p-2 rounded-full text-brand-usdt">
+                                <i class="fa-solid fa-arrow-down"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Recebimento Confirmado</p>
+                                <p class="font-bold text-white text-lg">+ 500,00 USDT</p>
+                                <p class="text-[10px] text-brand-usdt mt-1 font-medium">BLOCKCHAIN VERIFIED</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Back decorative elements -->
+                    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Dados (Clean Charts) -->
+    <section id="dados" class="py-20 bg-brand-surface border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">O dinheiro inteligente já migrou.</h2>
+                    <p class="text-slate-400 mb-6 text-lg">
+                        Stablecoins movimentam <strong>Trilhões de Dólares</strong> anualmente, oferecendo a segurança do Dólar com a velocidade da internet.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-brand-usdt/20 flex items-center justify-center text-brand-usdt text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-300">Volume superior a <strong>$160 Bilhões</strong> em circulação.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-brand-usdt/20 flex items-center justify-center text-brand-usdt text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-300">Operação 24/7 global, sem feriados bancários.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-brand-usdt/20 flex items-center justify-center text-brand-usdt text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-300">Adoção institucional (BlackRock, Visa, Governos).</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Chart Minimalista -->
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-sm">
+                    <h3 class="text-xs font-semibold text-slate-500 uppercase mb-8 tracking-wider">Volume de Liquidação (Comparativo)</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Visa -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-2 text-slate-300">
+                                <span>Visa</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-blue-900 w-[95%]"></div>
+                            </div>
+                        </div>
+                        <!-- Stablecoins -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="font-semibold text-white">Stablecoins (USDT/USDC)</span>
+                                <span class="text-brand-usdt text-xs font-bold bg-brand-usdt/10 px-2 py-0.5 rounded">Alta Performance</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-brand-usdt w-[90%]"></div>
+                            </div>
+                        </div>
+                        <!-- Mastercard -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-2 text-slate-300">
+                                <span>Mastercard</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-slate-600 w-[60%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-6 pt-6 border-t border-slate-800 text-center">
+                        Fonte: Dados de mercado on-chain 2024.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O Problema (Gráfico BRL vs USD) -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold text-white mb-2">Dolarização Sintética</h2>
+                <p class="text-slate-400">Proteção patrimonial contra a desvalorização cambial.</p>
+            </div>
+            
+            <div class="bg-slate-900 border border-slate-800 p-8 rounded-xl">
+                <div class="flex justify-between items-end h-56 px-8 pb-4 relative border-b border-slate-700">
+                    <!-- Y Axis Labels -->
+                    <div class="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-slate-600">
+                        <span>100%</span>
+                        <span>50%</span>
+                        <span>0%</span>
+                    </div>
+
+                    <!-- Chart Bars -->
+                    <div class="w-24 flex flex-col justify-end gap-1 h-full">
+                        <div class="w-full bg-brand-usdt h-[95%] rounded-sm opacity-90 relative group">
+                             <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-slate-800 text-xs px-2 py-1 rounded hidden group-hover:block">USD</div>
+                        </div>
+                        <div class="w-full bg-red-900 h-[90%] rounded-sm opacity-60"></div>
+                        <span class="text-xs text-slate-500 text-center mt-2">2014</span>
+                    </div>
+
+                    <div class="w-24 flex flex-col justify-end gap-1 h-full">
+                        <div class="w-full bg-brand-usdt h-[85%] rounded-sm opacity-90"></div>
+                        <div class="w-full bg-red-900 h-[50%] rounded-sm opacity-60"></div>
+                        <span class="text-xs text-slate-500 text-center mt-2">2019</span>
+                    </div>
+
+                    <div class="w-24 flex flex-col justify-end gap-1 h-full relative">
+                        <div class="absolute -top-12 left-1/2 -translate-x-1/2 text-center w-32">
+                             <span class="text-[10px] text-slate-400 uppercase tracking-wide">Poder de Compra</span>
+                        </div>
+                        <div class="w-full bg-brand-usdt h-[75%] rounded-sm shadow-[0_0_10px_rgba(38,161,123,0.2)]"></div>
+                        <div class="w-full bg-red-500 h-[15%] rounded-sm"></div>
+                        <span class="text-xs text-white font-bold text-center mt-2">Hoje</span>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 mt-4 text-xs">
+                    <div class="flex items-center gap-2"><span class="w-3 h-3 bg-brand-usdt rounded-sm"></span> <span class="text-slate-400">Dólar (USD)</span></div>
+                    <div class="flex items-center gap-2"><span class="w-3 h-3 bg-red-500 rounded-sm"></span> <span class="text-slate-400">Real (BRL)</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estratégia Cards -->
+    <section id="solucao" class="py-20 bg-brand-surface">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="pro-card p-8 rounded-lg">
+                    <div class="w-12 h-12 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center mb-6 text-brand-usdt text-xl">
+                        <i class="fa-solid fa-vault"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-white">Proteção Patrimonial</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Seu caixa fica imune a crises políticas locais. Enquanto o mercado conta Reais, sua empresa acumula moeda forte.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="pro-card p-8 rounded-lg">
+                    <div class="w-12 h-12 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center mb-6 text-brand-btc text-xl">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-white">Liquidez Global</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Acesse seu capital em qualquer país sem burocracia de câmbio. Seu dinheiro deixa de ter fronteiras geográficas.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="pro-card p-8 rounded-lg">
+                    <div class="w-12 h-12 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center mb-6 text-blue-400 text-xl">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-white">Privacidade & Custódia</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Transações peer-to-peer criptografadas. Eliminamos intermediários que monetizam os dados da sua empresa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRE / Tabela Financeira -->
+    <section id="dre" class="py-20 border-y border-slate-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white">Demonstrativo de Resultado (DRE)</h2>
+                <p class="text-slate-400 mt-2">Comparativo financeiro direto.</p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-lg">
+                <div class="mb-8 flex flex-col md:flex-row gap-6 items-end pb-8 border-b border-slate-800">
+                    <div class="w-full md:w-1/2">
+                        <label class="block text-xs font-semibold text-slate-500 uppercase mb-2">Valor da Venda (R$)</label>
+                        <input type="number" id="vendaInput" value="5000" class="input-field w-full rounded-md px-4 py-3 text-white font-mono text-lg" oninput="updateDRE()">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <label class="block text-xs font-semibold text-slate-500 uppercase mb-2">Desconto Incentivo (%)</label>
+                        <div class="flex items-center gap-4">
+                            <input type="range" id="discountRange" min="0" max="20" value="10" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-brand-btc" oninput="updateDRE()">
+                            <span class="text-brand-btc font-mono font-bold" id="discountDisplay">10%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table Style Financial -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-xs text-slate-500 uppercase border-b border-slate-700">
+                                <th class="py-3 font-medium">Descrição</th>
+                                <th class="py-3 font-medium text-right text-red-400">Sistema Bancário</th>
+                                <th class="py-3 font-medium text-right text-brand-usdt">Sistema Crypto</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-300 font-mono text-sm">
+                            <tr class="border-b border-slate-800">
+                                <td class="py-4">Preço de Venda</td>
+                                <td class="py-4 text-right text-slate-400" id="fiatPrice">R$ 5.000,00</td>
+                                <td class="py-4 text-right text-white" id="cryptoPrice">R$ 4.500,00</td>
+                            </tr>
+                            <tr class="border-b border-slate-800">
+                                <td class="py-4 text-slate-500">Desconto Aplicado</td>
+                                <td class="py-4 text-right text-slate-600">-</td>
+                                <td class="py-4 text-right text-brand-btc" id="cryptoDiscountText">10%</td>
+                            </tr>
+                            <tr class="border-b border-slate-800">
+                                <td class="py-4">(-) Impostos (~12%)</td>
+                                <td class="py-4 text-right text-red-400/80" id="fiatTax">- R$ 600,00</td>
+                                <td class="py-4 text-right text-slate-600">R$ 0,00</td>
+                            </tr>
+                            <tr class="border-b border-slate-800">
+                                <td class="py-4">(-) Taxas Maquininha (5%)</td>
+                                <td class="py-4 text-right text-red-400/80" id="fiatFees">- R$ 250,00</td>
+                                <td class="py-4 text-right text-slate-600">R$ 0,00</td>
+                            </tr>
+                            <tr class="border-b border-slate-800">
+                                <td class="py-4">(-) Taxa de Rede</td>
+                                <td class="py-4 text-right text-slate-600">R$ 0,00</td>
+                                <td class="py-4 text-right text-orange-400/80">- R$ 5,00</td>
+                            </tr>
+                            <!-- Totals -->
+                            <tr class="bg-slate-800/30">
+                                <td class="py-6 font-bold text-white pl-4 border-l-4 border-transparent">LUCRO LÍQUIDO</td>
+                                <td class="py-6 text-right font-bold text-slate-400" id="fiatNet">R$ 4.150,00</td>
+                                <td class="py-6 text-right font-bold text-xl text-brand-usdt border-r-4 border-brand-usdt pr-4" id="cryptoNet">R$ 4.495,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6 flex justify-end">
+                    <div class="bg-brand-usdt/10 border border-brand-usdt/20 px-6 py-4 rounded-lg inline-block text-right">
+                        <p class="text-xs text-brand-usdt uppercase font-semibold">Diferença de Caixa</p>
+                        <p class="text-2xl font-bold text-white" id="differenceResult">+ R$ 345,00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Segurança & Processo -->
+    <section id="seguranca" class="py-20 bg-brand-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 gap-16">
+                <!-- Segurança -->
+                <div class="mb-16 lg:mb-0">
+                    <div class="mb-8">
+                        <span class="text-brand-btc text-xs font-bold uppercase tracking-wider">Infraestrutura</span>
+                        <h2 class="text-3xl font-bold mt-2 text-white">Segurança "Bank-Grade"</h2>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-5">
+                            <div class="w-10 h-10 rounded bg-slate-800 flex items-center justify-center border border-slate-700 shrink-0 text-blue-400">
+                                <i class="fa-solid fa-snowflake"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Cold Storage</h4>
+                                <p class="text-sm text-slate-400 leading-relaxed">Seus fundos são armazenados em hardware desconectado da internet. Imune a ataques remotos.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <div class="w-10 h-10 rounded bg-slate-800 flex items-center justify-center border border-slate-700 shrink-0 text-yellow-500">
+                                <i class="fa-solid fa-key"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Custódia Soberana</h4>
+                                <p class="text-sm text-slate-400 leading-relaxed">"Not your keys, not your coins". Treinamos você para ser o único detentor das senhas de acesso.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Processo -->
+                <div>
+                     <div class="mb-8">
+                        <span class="text-brand-usdt text-xs font-bold uppercase tracking-wider">Simplicidade</span>
+                        <h2 class="text-3xl font-bold mt-2 text-white">Como funciona?</h2>
+                    </div>
+
+                    <div class="border-l-2 border-slate-700 pl-8 space-y-10">
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-brand-dark border-2 border-brand-btc"></span>
+                            <h4 class="font-bold text-white text-lg">Setup (48h)</h4>
+                            <p class="text-sm text-slate-400 mt-1">Configuração técnica das carteiras e auditoria de segurança inicial.</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-brand-dark border-2 border-slate-600"></span>
+                            <h4 class="font-bold text-white text-lg">Treinamento</h4>
+                            <p class="text-sm text-slate-400 mt-1">Capacitação da equipe para gerar QR Codes em 5 segundos no PDV.</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-brand-dark border-2 border-brand-usdt"></span>
+                            <h4 class="font-bold text-white text-lg">Gestão</h4>
+                            <p class="text-sm text-slate-400 mt-1">Definição da estratégia de liquidez: manter em Dólar ou realizar despesas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (Accordion Clean) -->
+    <section class="py-20 border-t border-slate-800">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-10 text-center text-white">Perguntas Frequentes</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-slate-900 border border-slate-800 rounded-lg">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-300 hover:text-white transition">
+                        <span>É legal receber em Criptomoedas no Brasil?</span>
+                        <span class="transition group-open:rotate-180 text-slate-500"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="text-slate-400 px-5 pb-5 text-sm leading-relaxed border-t border-slate-800 pt-4">
+                        <p>Sim. Criptomoedas são ativos digitais reconhecidos pela Receita Federal. A posse e a transação são permitidas. Nossa consultoria foca na eficiência e privacidade da custódia, garantindo conformidade com a legislação vigente.</p>
+                    </div>
+                </details>
+
+                <details class="group bg-slate-900 border border-slate-800 rounded-lg">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-300 hover:text-white transition">
+                        <span>Como lidar com a volatilidade do Bitcoin?</span>
+                        <span class="transition group-open:rotate-180 text-slate-500"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="text-slate-400 px-5 pb-5 text-sm leading-relaxed border-t border-slate-800 pt-4">
+                        <p>Utilizamos <strong>Stablecoins (USDT)</strong> para mitigar este risco. O recebimento é convertido instantaneamente para Dólar Digital, mantendo a paridade de 1:1 com o dólar americano, eliminando o risco de volatilidade de mercado.</p>
+                    </div>
+                </details>
+                
+                <details class="group bg-slate-900 border border-slate-800 rounded-lg">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-300 hover:text-white transition">
+                        <span>Como pago fornecedores que não aceitam cripto?</span>
+                        <span class="transition group-open:rotate-180 text-slate-500"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="text-slate-400 px-5 pb-5 text-sm leading-relaxed border-t border-slate-800 pt-4">
+                        <p>Implementamos soluções de cartões corporativos "Crypto-to-Fiat". Você usa seu saldo em cripto, e o cartão converte instantaneamente para Reais no momento da compra, passando em qualquer maquininha Visa/Mastercard.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato (Minimalist Form) -->
+    <section id="contato" class="py-20 bg-slate-900">
+        <div class="max-w-xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-white mb-4">Agende uma Análise</h2>
+                <p class="text-slate-400">Verifique a viabilidade da implementação para o seu modelo de negócio.</p>
+            </div>
+            
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-2">Responsável</label>
+                    <input type="text" class="input-field w-full rounded-md px-4 py-3 text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-2">WhatsApp Corporativo</label>
+                    <input type="text" class="input-field w-full rounded-md px-4 py-3 text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-2">Setor</label>
+                    <select class="input-field w-full rounded-md px-4 py-3 text-white appearance-none">
+                        <option>Comércio Varejista</option>
+                        <option>Serviços (Médico, Eng, Arq)</option>
+                        <option>Indústria</option>
+                        <option>Outros</option>
+                    </select>
+                </div>
+                <button type="button" class="w-full bg-brand-btc hover:bg-yellow-600 text-white font-bold py-4 rounded-md transition shadow-lg mt-6 flex justify-center items-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> Iniciar Atendimento
+                </button>
+                <p class="text-xs text-center text-slate-600 mt-4">
+                    <i class="fa-solid fa-shield-halved mr-1"></i> Seus dados estão protegidos por criptografia de ponta a ponta.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0F172A] py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="font-semibold text-lg text-white">Soberania<span class="text-slate-500 font-light">Biz</span></span>
+                <p class="text-xs text-slate-500 mt-2">Consultoria em Engenharia Financeira Descentralizada.</p>
+            </div>
+            <div class="flex gap-8 text-xs text-slate-500 font-medium">
+                <a href="#" class="hover:text-white transition">Privacidade</a>
+                <a href="#" class="hover:text-white transition">Termos</a>
+                <a href="#" class="hover:text-white transition">Compliance</a>
+            </div>
+            <div class="text-xs text-slate-600">
+                &copy; 2024 Soberania Digital.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script DRE (Logica Mantida) -->
+    <script>
+        function updateDRE() {
+            const salePrice = parseFloat(document.getElementById('vendaInput').value) || 0;
+            const discountPercent = parseFloat(document.getElementById('discountRange').value) || 0;
+            
+            document.getElementById('discountDisplay').innerText = discountPercent + "%";
+            document.getElementById('cryptoDiscountText').innerText = discountPercent + "%";
+
+            const taxRate = 0.12; 
+            const cardFees = 0.05; 
+            const networkFee = 5.00;
+
+            // FIAT
+            const fiatTaxValue = salePrice * taxRate;
+            const fiatCardValue = salePrice * cardFees;
+            const fiatNetValue = salePrice - fiatTaxValue - fiatCardValue;
+
+            // CRYPTO
+            const discountValue = salePrice * (discountPercent / 100);
+            const cryptoPrice = salePrice - discountValue;
+            const cryptoNetValue = cryptoPrice - networkFee;
+
+            const formatBRL = (val) => val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            document.getElementById('fiatPrice').innerText = formatBRL(salePrice);
+            document.getElementById('cryptoPrice').innerText = formatBRL(cryptoPrice);
+            document.getElementById('fiatTax').innerText = "- " + formatBRL(fiatTaxValue);
+            document.getElementById('fiatFees').innerText = "- " + formatBRL(fiatCardValue);
+            document.getElementById('fiatNet').innerText = formatBRL(fiatNetValue);
+            document.getElementById('cryptoNet').innerText = formatBRL(cryptoNetValue);
+
+            const diff = cryptoNetValue - fiatNetValue;
+            const diffEl = document.getElementById('differenceResult');
+            
+            if(diff > 0) {
+                diffEl.innerText = "+ " + formatBRL(diff);
+                diffEl.className = "text-2xl font-bold text-brand-usdt";
+            } else {
+                diffEl.innerText = formatBRL(diff);
+                diffEl.className = "text-2xl font-bold text-red-400";
+            }
+        }
+        window.onload = updateDRE;
+    </script>
+</body>
+</html>
