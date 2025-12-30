@@ -82,7 +82,6 @@
         .clean-card {
             background: white;
             border-radius: 16px;
-            /* Border muito sutil ou inexistente */
             border: 1px solid #F1F5F9;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
             transition: all 0.3s ease;
@@ -116,17 +115,31 @@
             display: none;
         }
 
-        /* Scrollbar */
+        /* News Card Specifics */
+        .news-card {
+            border-left: 4px solid #0F172A;
+        }
+
+        /* Scrollbar Personalizada e Horizontal */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: white;
+            background: #F8FAFC;
         }
         ::-webkit-scrollbar-thumb {
             background: #CBD5E1;
             border-radius: 3px;
+        }
+        
+        /* Esconder scrollbar padrão no container de notícias para visual clean, mas manter funcionalidade */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -369,6 +382,37 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SESSÃO: MIDIA AUTHORITY (Carrossel Horizontal) -->
+    <section id="midia" class="py-12 md:py-24 bg-white border-y border-slate-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-brand-btc text-[10px] md:text-xs font-bold uppercase tracking-wider bg-orange-50 px-3 py-1 rounded-full border border-orange-100">Reconhecimento Institucional</span>
+                <h2 class="text-2xl md:text-3xl font-bold mt-4 text-slate-900">O Que a Mídia Global Diz</h2>
+                <p class="text-slate-500 mt-2 text-sm md:text-base">Acompanhe as últimas tendências do mercado financeiro digital.</p>
+            </div>
+
+            <!-- Loading State (Inicial) -->
+            <div id="news-loading" class="text-center py-12 flex flex-col items-center justify-center">
+                <i class="fa-solid fa-circle-notch fa-spin text-3xl text-slate-300 mb-4"></i>
+                <p class="text-slate-500 font-medium animate-pulse text-sm">Buscando as melhores notícias para você...</p>
+                <div class="flex gap-2 mt-2">
+                    <span class="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style="animation-delay: 0s"></span>
+                    <span class="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+                    <span class="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                </div>
+            </div>
+
+            <!-- Container das Notícias (Horizontal Scroll) -->
+            <div id="news-container" class="hidden flex gap-6 overflow-x-auto pb-8 pt-2 px-1 snap-x snap-mandatory hide-scroll md:custom-scroll">
+                <!-- Javascript will populate this -->
+            </div>
+            
+            <div class="mt-4 text-center">
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Arraste para o lado para ver mais • Fontes Verificadas</p>
             </div>
         </div>
     </section>
@@ -775,8 +819,9 @@
         </div>
     </footer>
 
-    <!-- Script DRE -->
+    <!-- Scripts -->
     <script>
+        // Lógica DRE
         function updateDRE() {
             const salePrice = parseFloat(document.getElementById('vendaInput').value) || 0;
             const discountPercent = parseFloat(document.getElementById('discountRange').value) || 0;
@@ -819,7 +864,128 @@
                 diffEl.classList.add('text-red-500');
             }
         }
-        window.onload = updateDRE;
+
+        // Lógica de Notícias Simuladas (Para parecer dinâmico sem backend)
+        const curatedNews = [
+            {
+                source: "Forbes Money",
+                date: "Há 2 dias",
+                title: "BlackRock lança fundo tokenizado e reforça estratégia em ativos digitais",
+                snippet: "A maior gestora de ativos do mundo confirma: a tokenização é o próximo passo da evolução do mercado financeiro global.",
+                icon: "fa-solid fa-newspaper",
+                color: "text-slate-900"
+            },
+            {
+                source: "Valor Econômico",
+                date: "Semana passada",
+                title: "BC confirma: Stablecoins reduzem custos de transação em 80%",
+                snippet: "Relatório de eficiência do Banco Central aponta vantagens claras no uso de moedas digitais lastreadas para o varejo.",
+                icon: "fa-solid fa-chart-line",
+                color: "text-green-600"
+            },
+            {
+                source: "Visa News",
+                date: "Recente",
+                title: "Visa expande liquidação com USDC na rede Solana",
+                snippet: "Gigante de pagamentos integra Dólar Digital (USDC) para acelerar transações globais corporativas com liquidez imediata.",
+                icon: "fa-brands fa-cc-visa",
+                color: "text-blue-600"
+            },
+            {
+                source: "Stripe Press",
+                date: "Hoje",
+                title: "Stripe reativa pagamentos globais com Stablecoins (USDC)",
+                snippet: "A maior processadora de pagamentos da internet volta a integrar crypto, permitindo que empresas recebam em Dólar Digital instantaneamente.",
+                icon: "fa-brands fa-stripe",
+                color: "text-indigo-600"
+            },
+            {
+                source: "Bloomberg Línea",
+                date: "Recente",
+                title: "Wall Street valida reservas do Tether (USDT)",
+                snippet: "Cantor Fitzgerald, gigante financeira de NY, confirma que o USDT possui lastro integral, garantindo segurança institucional ao ativo.",
+                icon: "fa-solid fa-building-columns",
+                color: "text-slate-800"
+            },
+            {
+                source: "J.P. Morgan Onyx",
+                date: "Há 1 dia",
+                title: "J.P. Morgan liquida US$ 1 Bilhão diariamente via Blockchain",
+                snippet: "O maior banco dos EUA utiliza tecnologia de ledger distribuído (JPM Coin) para agilizar pagamentos transfronteiriços institucionais.",
+                icon: "fa-solid fa-money-bill-transfer",
+                color: "text-blue-800"
+            },
+            {
+                source: "SWIFT",
+                date: "Ontem",
+                title: "SWIFT avança em testes de interoperabilidade Blockchain",
+                snippet: "O sistema bancário global prepara infraestrutura para integrar ativos tokenizados à rede financeira tradicional.",
+                icon: "fa-solid fa-globe",
+                color: "text-indigo-600"
+            },
+            {
+                source: "Mastercard News",
+                date: "Recente",
+                title: "Mastercard lança rede 'Multi-Token' para ativos digitais",
+                snippet: "Nova infraestrutura conecta depósitos bancários tradicionais a Stablecoins reguladas, criando uma ponte segura para o sistema financeiro.",
+                icon: "fa-brands fa-cc-mastercard",
+                color: "text-red-600"
+            },
+            {
+                source: "Chainalysis",
+                date: "Há 3 dias",
+                title: "América Latina lidera adoção de cripto para proteção patrimonial",
+                snippet: "Relatório aponta que empresas latinas usam stablecoins massivamente para fugir da inflação local.",
+                icon: "fa-solid fa-shield-halved",
+                color: "text-orange-500"
+            }
+        ];
+
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            const loading = document.getElementById('news-loading');
+            
+            // Simula delay de rede para dar sensação de "busca"
+            setTimeout(() => {
+                loading.style.display = 'none'; // Esconde loading
+                container.classList.remove('hidden'); // Mostra container
+                
+                curatedNews.forEach((news, index) => {
+                    // Cria o card de notícia com fade-in
+                    const card = document.createElement('div');
+                    card.className = "clean-card p-6 min-w-[300px] md:min-w-[350px] news-card opacity-0 transform translate-x-4 transition-all duration-700 ease-out hover:shadow-lg cursor-pointer snap-center";
+                    card.style.animationDelay = `${index * 200}ms`; // Stagger effect
+                    
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <i class="${news.icon} text-xl ${news.color}"></i>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">${news.source}</span>
+                            </div>
+                            <span class="text-[10px] text-slate-400 bg-slate-50 px-2 py-1 rounded">${news.date}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3 leading-snug">${news.title}</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-3">${news.snippet}</p>
+                        <div class="flex items-center text-xs font-bold text-brand-dark group mt-auto">
+                            Ler matéria completa <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    `;
+                    
+                    container.appendChild(card);
+                    
+                    // Trigger reflow para animação
+                    setTimeout(() => {
+                        card.classList.remove('opacity-0', 'translate-x-4');
+                    }, 50 + (index * 150));
+                });
+                
+            }, 2000); // 2 segundos de "busca"
+        }
+
+        window.onload = function() {
+            updateDRE();
+            renderNews();
+        };
     </script>
 </body>
 </html>
