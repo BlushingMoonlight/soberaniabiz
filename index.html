@@ -81,6 +81,55 @@
             color: #94A3B8 !important;
         }
 
+        /* Tooltip Styles */
+        .tooltip-trigger {
+            border-bottom: 1px dashed #94a3b8;
+            cursor: help;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip-box {
+            visibility: hidden;
+            width: 200px;
+            background-color: #0f172a;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 8px 10px;
+            position: absolute;
+            z-index: 100;
+            bottom: 140%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s, bottom 0.2s;
+            font-size: 0.7rem;
+            line-height: 1.3;
+            font-weight: 500;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        .tooltip-box::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #0f172a transparent transparent transparent;
+        }
+
+        /* Show tooltip logic */
+        .tooltip-trigger:hover .tooltip-box,
+        .tooltip-trigger.active .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+            bottom: 125%;
+        }
+
         /* Hero Background */
         .hero-bg {
             background-color: #FFFFFF;
@@ -236,7 +285,7 @@
                     </h1>
                     
                     <p class="text-base md:text-xl text-slate-700 leading-relaxed max-w-2xl font-normal drop-shadow-sm bg-white/40 dark:bg-slate-800/40 backdrop-blur-[2px] rounded-lg p-2 -ml-2 transition-colors">
-                        O Real é um passivo governamental. O USDT (Cripto) é um ativo de liberdade. Implementamos a infraestrutura para sua empresa transacionar com total independência do sistema bancário tradicional (SISBACEN), eliminando taxas de intermediação e protegendo 100% do seu lucro sob sua custódia exclusiva.
+                        O Real é um passivo governamental. O <span class="tooltip-trigger">USDT<span class="tooltip-box">Dólar Digital (Tether). Vale sempre US$ 1,00, sem volatilidade.</span></span> (Criptomoeda) é um ativo de liberdade. Implementamos a infraestrutura para sua empresa transacionar com total independência do sistema bancário tradicional (<span class="tooltip-trigger">SISBACEN<span class="tooltip-box">Sistema do Banco Central que monitora todas as contas bancárias no Brasil.</span></span>), eliminando taxas de intermediação e protegendo 100% do seu lucro sob sua custódia exclusiva.
                     </p>
 
                     <!-- BOTÕES -->
@@ -246,9 +295,9 @@
                     </div>
                     
                     <div class="mt-10 md:mt-12 grid grid-cols-2 md:flex flex-wrap gap-y-3 gap-x-6 text-sm text-slate-600 font-medium">
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-usdt"></i><span>Risco Zero (Skin in the Game)</span></div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-usdt"></i><span><span class="tooltip-trigger">Skin in the Game<span class="tooltip-box">"Pele em Risco". Nós assumimos o risco junto com você. Só ganhamos se você ganhar.</span></span></span></div>
                         <div class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-usdt"></i><span>Liquidez Imediata (D+0)</span></div>
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-usdt"></i><span>Segurança "Bank-Grade"</span></div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-usdt"></i><span>Segurança <span class="tooltip-trigger">"Bank-Grade"<span class="tooltip-box">Padrão de segurança cibernética equivalente aos maiores bancos globais.</span></span></span></div>
                         <div class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-usdt"></i><span>Escudo Anti-Inflação</span></div>
                     </div>
                 </div>
@@ -267,7 +316,7 @@
                         </div>
                         <div class="mt-6 flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
                             <i class="fa-brands fa-ethereum"></i>
-                            <span class="font-mono">Smart Contract Verified</span>
+                            <span class="font-mono tooltip-trigger">Smart Contract<span class="tooltip-box">Contrato Inteligente. Código que garante a execução automática da transação na Blockchain.</span></span> Verified
                         </div>
                     </div>
                 </div>
@@ -280,9 +329,9 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="text-brand-btc text-xs font-bold uppercase tracking-wider bg-orange-50 dark:bg-orange-900/20 px-3 py-1 rounded-full border border-orange-100 dark:border-orange-900/30">Eficiência Legal</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-4 text-slate-900">Transcendendo o Sistema Legado: O Poder da Infraestrutura Web3</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mt-4 text-slate-900">Transcendendo o Sistema Legado: O Poder da <span class="tooltip-trigger">Infraestrutura Web3<span class="tooltip-box">A nova internet baseada em Blockchain, descentralizada e sem servidores centrais.</span></span></h2>
                 <p class="text-slate-600 mt-4 max-w-2xl mx-auto">
-                    O modelo bancário tradicional é desenhado para ser um pedágio sobre o seu trabalho. Na SoberaniaBiz, instalamos uma Infraestrutura de nova geração baseada em protocolos descentralizados.
+                    O modelo bancário tradicional (chamado de Legado) é desenhado para ser um pedágio sobre o seu trabalho. Na SoberaniaBiz, instalamos uma Infraestrutura de nova geração para você receber em criptomoeda, baseada nos protocolos descentralizados mais seguros da humanidade.
                 </p>
             </div>
 
@@ -295,9 +344,9 @@
                             <i class="fa-solid fa-scale-balanced"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-slate-900">Soberania de Fluxo (Self-Custody)</h3>
+                            <h3 class="text-xl font-bold text-slate-900">Soberania de Fluxo (<span class="tooltip-trigger">Self-Custody<span class="tooltip-box">Autocustódia: Você é seu próprio banco. Só você tem a senha para mover o dinheiro.</span></span>)</h3>
                             <p class="text-slate-600 mt-2 text-sm leading-relaxed">
-                                Ao receber em Cripto, USDT, você não depende de autorização bancária. O valor cai na sua Cold Wallet (Carteira Fria), protegida por criptografia de nível militar.
+                                Ao receber em Cripto, USDT, você não depende de autorização bancária. O valor cai na sua <span class="tooltip-trigger">Cold Wallet (Carteira Fria)<span class="tooltip-box">Dispositivo físico desconectado da internet. Segurança máxima contra hackers.</span></span>, protegida por criptografia de nível militar.
                             </p>
                         </div>
                     </div>
@@ -308,9 +357,9 @@
                             <i class="fa-solid fa-clock-rotate-left"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-slate-900">Eficiência Transacional (Zero Middlemen)</h3>
+                            <h3 class="text-xl font-bold text-slate-900">Eficiência Transacional (<span class="tooltip-trigger">Zero Middlemen<span class="tooltip-box">Sem intermediários. Adeus maquininhas, bandeiras e bancos no meio da venda.</span></span>)</h3>
                             <p class="text-slate-600 mt-2 text-sm leading-relaxed">
-                                Eliminamos o intermediário. A transação é P2P (Peer-to-Peer). O dinheiro sai da carteira do cliente e entra na sua sem passar por câmaras de compensação centralizadas.
+                                Eliminamos o intermediário. A transação é <span class="tooltip-trigger">P2P (Peer-to-Peer)<span class="tooltip-box">Ponto a Ponto. Transação direta entre duas pessoas, sem passar pelo banco.</span></span>. O dinheiro sai da carteira do cliente e entra na sua sem passar por câmaras de compensação centralizadas. <strong class="block mt-2 text-slate-900 dark:text-white">Vale lembrar: isso funciona em paralelo. Você continua aceitando Pix e Cartão normalmente, apenas adicionamos uma via expressa mais lucrativa.</strong>
                             </p>
                         </div>
                     </div>
@@ -323,7 +372,7 @@
                         <div>
                             <h3 class="text-xl font-bold text-slate-900">Conformidade Blindada</h3>
                             <p class="text-slate-600 mt-2 text-sm leading-relaxed">
-                                Operamos sob a IN 1.888 da Receita Federal. Transformamos a complexidade tributária em relatórios simplificados para seu contador, garantindo que você esteja legalmente protegido enquanto desfruta da privacidade tecnológica.
+                                Operamos sob a <span class="tooltip-trigger">IN 1.888<span class="tooltip-box">Instrução Normativa da Receita Federal que regula a declaração de Criptoativos.</span></span> da Receita Federal. Transformamos a complexidade tributária em relatórios simplificados para seu contador, garantindo que você esteja legalmente protegido enquanto desfruta da privacidade tecnológica.
                             </p>
                         </div>
                     </div>
@@ -346,7 +395,7 @@
                         <div class="space-y-4 mb-8">
                             <div class="flex items-center p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl">
                                 <div class="w-2 h-2 rounded-full bg-brand-usdt mr-3"></div>
-                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Configuração de Wallets Corporativas</span>
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Configuração de <span class="tooltip-trigger">Wallets<span class="tooltip-box">Carteiras digitais ou físicas onde suas chaves privadas são armazenadas.</span></span> Corporativas</span>
                             </div>
                             <div class="flex items-center p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl">
                                 <div class="w-2 h-2 rounded-full bg-brand-usdt mr-3"></div>
@@ -354,7 +403,7 @@
                             </div>
                             <div class="flex items-center p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl">
                                 <div class="w-2 h-2 rounded-full bg-brand-usdt mr-3"></div>
-                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Integração com PDV Atual</span>
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Integração com <span class="tooltip-trigger">PDV<span class="tooltip-box">Ponto de Venda. Seu sistema atual de caixa e emissão de notas.</span></span> Atual</span>
                             </div>
                         </div>
 
@@ -390,7 +439,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <span class="text-brand-usdt text-xs font-bold uppercase tracking-wider bg-green-50 dark:bg-green-900/20 px-3 py-1 rounded-full border border-green-100 dark:border-green-900/30">Modelo de Parceria</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-4 text-slate-900">Risco Zero: "Skin in the Game"</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-4 text-slate-900">Risco Zero: <span class="tooltip-trigger">"Skin in the Game"<span class="tooltip-box">Filosofia onde a empresa coloca o seu próprio capital/esforço em risco junto com o cliente.</span></span></h2>
                 <p class="text-slate-600 text-base md:text-lg leading-relaxed">
                     Nós acreditamos tanto que o seu cliente prefere pagar menos e você prefere lucrar mais, que eliminamos as barreiras. <span class="font-bold text-slate-900 dark:text-white">Assumimos o risco da implementação.</span>
                 </p>
@@ -407,7 +456,7 @@
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-btc to-brand-usdt"></div>
                     <div class="w-16 h-16 bg-slate-50 dark:bg-slate-800 rounded-2xl mx-auto flex items-center justify-center text-brand-btc text-2xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-handshake"></i></div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Sucesso Compartilhado</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Somos parceiros da eficiência. Nossa remuneração é uma taxa única de <strong class="text-slate-800 dark:text-slate-200">5% apenas sobre o volume transacionado</strong> em criptomoeda.</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Nossa remuneração é regressiva (Programa de Fidelidade). Começa em 5% e cai para <strong class="text-slate-800 dark:text-slate-200">3% (acima de 100k) e 1% (acima de 1M)</strong>. Quanto mais você fatura, menos taxa você paga.</p>
                 </div>
                 <div class="clean-card p-8 text-center relative overflow-hidden group">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-dark to-slate-500"></div>
@@ -443,7 +492,7 @@
                         </div>
                         <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">USDT (Tether) - Criptomoeda do Dólar</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
-                            Esqueça as fronteiras financeiras. O USDT permite que você opere com a moeda mais forte do mundo sem as amarras do sistema bancário brasileiro. <strong>Sem IOF, sem spread abusivo e sem pedir permissão.</strong> É a liberdade de gastar seu lucro em qualquer lugar do planeta ou converter para Real via PIX instantaneamente quando precisar de liquidez local. Enquanto o Real derrete, seu caixa em USDT se fortalece.
+                            Esqueça as fronteiras financeiras. O USDT permite que você opere com a moeda mais forte do mundo sem as amarras do sistema bancário brasileiro. <strong>Sem <span class="tooltip-trigger">IOF<span class="tooltip-box">Imposto sobre Operações Financeiras (6,38% em cartões). Em cripto é zero.</span></span>, sem <span class="tooltip-trigger">spread<span class="tooltip-box">Diferença entre preço de compra e venda. Bancos cobram spread alto; cripto tem spread mínimo.</span></span> abusivo e sem pedir permissão.</strong> É a liberdade de gastar seu lucro em qualquer lugar do planeta ou converter para Real via PIX instantaneamente quando precisar de liquidez local. Enquanto o Real derrete, seu caixa em USDT se fortalece.
                         </p>
                         <ul class="space-y-4 mb-6">
                             <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400">
@@ -470,7 +519,7 @@
                             <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400">
                                 <i class="fa-solid fa-building-columns text-brand-usdt mt-1 text-lg"></i>
                                 <div>
-                                    <strong class="text-slate-900 dark:text-white block mb-1">Lastro em T-Bills (Tesouro Americano)</strong>
+                                    <strong class="text-slate-900 dark:text-white block mb-1">Lastro em <span class="tooltip-trigger">T-Bills<span class="tooltip-box">Títulos do Tesouro Americano. O investimento mais seguro do mundo, que garante o valor do USDT.</span></span></strong>
                                     Segurança institucional. A maior parte das reservas do Tether é mantida em Títulos do Tesouro dos EUA, ativos de segurança máxima.
                                 </div>
                             </li>
@@ -516,7 +565,7 @@
                             <i class="fa-solid fa-rocket text-brand-btc mt-1 text-lg"></i>
                             <div>
                                 <strong class="text-slate-900 dark:text-white block mb-1">Tendência Inevitável</strong>
-                                Com ETFs da BlackRock e adoção por países, o Bitcoin deixou de ser aposta e virou ativo obrigatório em tesourarias inteligentes.
+                                Com <span class="tooltip-trigger">ETFs<span class="tooltip-box">Fundos de investimento em bolsa. Permitem que grandes investidores comprem Bitcoin legalmente.</span></span> da <span class="tooltip-trigger">BlackRock<span class="tooltip-box">A maior gestora de dinheiro do mundo (trilhões de dólares), que agora investe pesado em Bitcoin.</span></span> e adoção por países, o Bitcoin deixou de ser aposta e virou ativo obrigatório em tesourarias inteligentes.
                             </div>
                         </li>
                     </ul>
@@ -537,7 +586,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-10 md:mb-16">
                 <h2 class="text-2xl md:text-3xl font-bold mb-4">A Nova Espinha Dorsal do Dinheiro</h2>
-                <p class="text-slate-500 text-sm md:text-base">Não é "futuro", já aconteceu. As Stablecoins processam hoje volumes superiores aos maiores gigantes de cartão de crédito do planeta.</p>
+                <p class="text-slate-500 text-sm md:text-base">Não é "futuro", já aconteceu. As <span class="tooltip-trigger">Stablecoins<span class="tooltip-box">Criptomoedas de valor estável, geralmente pareadas 1:1 com o Dólar.</span></span> processam hoje volumes superiores aos maiores gigantes de cartão de crédito do planeta.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div class="space-y-4 md:space-y-8">
@@ -547,7 +596,7 @@
                         <div>
                             <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Liquidez Massiva (>$18 Trilhões)</h4>
                             <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                                Em 2024, o volume de liquidação anual de Stablecoins ultrapassou a marca de <strong>$18 Trilhões</strong>, superando a Visa ($15T) e a Mastercard ($9T). O dinheiro inteligente já migrou para a Blockchain.
+                                Em 2024, o volume de liquidação anual de Stablecoins ultrapassou a marca de <strong>$18 Trilhões</strong>, superando a Visa ($15T) e a Mastercard ($9T). O dinheiro inteligente já migrou para a <span class="tooltip-trigger">Blockchain<span class="tooltip-box">Livro-razão digital público e imutável onde todas as transações de cripto são registradas.</span></span>.
                             </p>
                         </div>
                     </div>
@@ -567,7 +616,7 @@
                         <div>
                             <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Adoção Institucional Pesada</h4>
                             <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                                <strong>Larry Fink (CEO da BlackRock)</strong> chama o Bitcoin de "Fuga para a Qualidade". Governos (como El Salvador) e Gigantes listadas em bolsa (Tesla, MicroStrategy) já acumulam Bitcoin em tesouraria. Não é mais "coisa de internet", é a nova base sólida do sistema financeiro global.
+                                <strong>Larry Fink (CEO da <span class="tooltip-trigger">BlackRock<span class="tooltip-box">A maior gestora de dinheiro do mundo (trilhões de dólares), que agora investe pesado em Bitcoin.</span></span>)</strong> chama o Bitcoin de "Fuga para a Qualidade". Governos e Gigantes listadas em bolsa já acumulam Bitcoin em tesouraria. Não é mais "coisa de internet", é a nova base sólida do sistema financeiro global.
                             </p>
                         </div>
                     </div>
@@ -593,15 +642,15 @@
          <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 md:gap-16">
                 <div>
-                     <div class="mb-6 md:mb-8"><span class="text-brand-btc text-xs font-bold uppercase tracking-wider">Infraestrutura</span><h2 class="text-2xl md:text-3xl font-bold mt-2 text-slate-900">Segurança "Bank-Grade"</h2></div>
+                     <div class="mb-6 md:mb-8"><span class="text-brand-btc text-xs font-bold uppercase tracking-wider">Infraestrutura</span><h2 class="text-2xl md:text-3xl font-bold mt-2 text-slate-900">Segurança <span class="tooltip-trigger">"Bank-Grade"<span class="tooltip-box">Padrão de segurança cibernética equivalente aos maiores bancos globais.</span></span></h2></div>
                     <div class="space-y-6">
-                        <div class="clean-card p-5 md:p-6 flex gap-4"><div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0"><i class="fa-solid fa-snowflake"></i></div><div><h4 class="font-bold text-slate-900">Cold Storage (Cofre Frio)</h4><p class="text-sm text-slate-500 mt-1 leading-relaxed">Seus fundos ficam em dispositivos desconectados da internet. É impossível um hacker acessar remotamente. Muito mais seguro que qualquer aplicativo bancário.</p></div></div>
-                         <div class="clean-card p-5 md:p-6 flex gap-4"><div class="w-10 h-10 rounded-full bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center text-yellow-600 dark:text-yellow-400 shrink-0"><i class="fa-solid fa-key"></i></div><div><h4 class="font-bold text-slate-900">Custódia Soberana</h4><p class="text-sm text-slate-500 mt-1 leading-relaxed">"Not your keys, not your coins". Você é o único detentor das senhas. O dinheiro é realmente seu, sem risco de bloqueio judicial ou falência bancária.</p></div></div>
+                        <div class="clean-card p-5 md:p-6 flex gap-4"><div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0"><i class="fa-solid fa-snowflake"></i></div><div><h4 class="font-bold text-slate-900"><span class="tooltip-trigger">Cold Storage (Cofre Frio)<span class="tooltip-box">Dispositivo físico desconectado da internet. Segurança máxima contra hackers.</span></span></h4><p class="text-sm text-slate-500 mt-1 leading-relaxed">Seus fundos ficam em dispositivos desconectados da internet. É impossível um hacker acessar remotamente. Muito mais seguro que qualquer aplicativo bancário.</p></div></div>
+                         <div class="clean-card p-5 md:p-6 flex gap-4"><div class="w-10 h-10 rounded-full bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center text-yellow-600 dark:text-yellow-400 shrink-0"><i class="fa-solid fa-key"></i></div><div><h4 class="font-bold text-slate-900"><span class="tooltip-trigger">Custódia Soberana<span class="tooltip-box">Você guarda seu próprio dinheiro. Sem depender da permissão de gerentes ou bancos.</span></span></h4><p class="text-sm text-slate-500 mt-1 leading-relaxed">"Not your keys, not your coins". Você é o único detentor das senhas. O dinheiro é realmente seu, sem risco de bloqueio judicial ou falência bancária.</p></div></div>
                          <!-- ATUALIZAÇÃO: Bloco explicativo sobre Wallet e Blockchain -->
                          <div class="p-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
                             <h5 class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2"><i class="fa-solid fa-circle-question text-brand-btc"></i> O que é uma Wallet Cripto?</h5>
                             <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Uma Wallet é seu banco pessoal na Blockchain: um registro global, imutável e acessível apenas por você, em qualquer lugar do mundo, sem intermediários.
+                                Uma Wallet é seu banco pessoal na <span class="tooltip-trigger">Blockchain<span class="tooltip-box">Livro-razão digital público e imutável onde todas as transações de cripto são registradas.</span></span>: um registro global, imutável e acessível apenas por você, em qualquer lugar do mundo, sem intermediários.
                             </p>
                          </div>
                     </div>
@@ -629,14 +678,14 @@
                         <!-- Passo 3 - ATUALIZADO -->
                         <div class="relative">
                             <span class="absolute -left-[35px] md:-left-[43px] top-1 w-6 h-6 rounded-full bg-white dark:bg-slate-800 border-4 border-brand-usdt shadow-sm z-10"></span>
-                            <h4 class="font-bold text-slate-900 text-base md:text-lg">3. Onboarding de Clientela</h4>
+                            <h4 class="font-bold text-slate-900 text-base md:text-lg">3. <span class="tooltip-trigger">Onboarding<span class="tooltip-box">Processo de introdução e treinamento de novos usuários ou clientes ao sistema.</span></span> de Clientela</h4>
                             <p class="text-sm text-slate-500 mt-2">Treinamos sua equipe de frente de caixa para converter o cliente comum em um usuário de cripto, oferecendo o Desconto de Soberania.</p>
                         </div>
 
                         <!-- Passo 4 - ATUALIZADO -->
                         <div class="relative">
                             <span class="absolute -left-[35px] md:-left-[43px] top-1 w-6 h-6 rounded-full bg-white dark:bg-slate-800 border-4 border-brand-btc shadow-sm z-10"></span>
-                            <h4 class="font-bold text-slate-900 text-base md:text-lg">4. Off-Ramp e Liquidez</h4>
+                            <h4 class="font-bold text-slate-900 text-base md:text-lg">4. <span class="tooltip-trigger">Off-Ramp<span class="tooltip-box">O caminho de "saída" das criptomoedas de volta para o dinheiro fiduciário (Reais).</span></span> e Liquidez</h4>
                             <p class="text-sm text-slate-500 mt-2">Precisa de Real para um boleto inevitável? Nossa rede garante conversão imediata para sua conta bancária.</p>
                         </div>
                     </div>
@@ -657,8 +706,8 @@
                         <p class="mb-6">Nossa missão é implementar uma infraestrutura paralela onde sua empresa opera com <strong>Bitcoin e Dólar Digital (USDT)</strong>.</p>
                         <ul class="space-y-3 list-none pl-0 text-sm md:text-base">
                             <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-usdt"></i> <strong>Redução de Custos:</strong> Fim das taxas de adquirência.</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-usdt"></i> <strong>Dolarização Sintética:</strong> Proteção contra inflação.</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-usdt"></i> <strong>Governança DAO:</strong> Ecossistema colaborativo.</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-usdt"></i> <strong><span class="tooltip-trigger">Dolarização Sintética<span class="tooltip-box">Exposição ao Dólar via criptoativos, protegendo o patrimônio sem conta offshore.</span></span>:</strong> Proteção contra inflação.</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand-usdt"></i> <strong>Governança <span class="tooltip-trigger">DAO<span class="tooltip-box">Organização Autônoma Descentralizada. Uma empresa regida por código, sem chefes centrais.</span></span>:</strong> Ecossistema colaborativo.</li>
                         </ul>
                     </div>
                 </div>
@@ -780,14 +829,14 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Blindagem de Reposição</h3>
                     <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Ao pagar fornecedores via Cold Wallet, você mantém sua estratégia de compras privada e protege seu fluxo de caixa contra a ineficiência do sistema tradicional, garantindo que sua operação nunca pare por burocracias bancárias.
+                        Ao pagar fornecedores via <span class="tooltip-trigger">Cold Wallet<span class="tooltip-box">Carteira fria. Dispositivo físico desconectado da internet para segurança máxima.</span></span>, você mantém sua estratégia de compras privada e protege seu fluxo de caixa contra a ineficiência do sistema tradicional, garantindo que sua operação nunca pare por burocracias bancárias.
                     </p>
                 </div>
             </div>
 
             <!-- CTA Específico -->
             <div class="text-center mb-16">
-                <p class="text-slate-600 dark:text-slate-400 font-medium mb-6">Quer que a gente convença o seu fornecedor? Nossa consultoria inclui o Onboarding estratégico para os seus parceiros de negócio.</p>
+                <p class="text-slate-600 dark:text-slate-400 font-medium mb-6">Quer que a gente convença o seu fornecedor? Nossa consultoria inclui o <span class="tooltip-trigger">Onboarding<span class="tooltip-box">Processo de introdução e treinamento de novos usuários ou clientes ao sistema.</span></span> estratégico para os seus parceiros de negócio.</p>
                 <a href="#contato" class="btn-primary px-8 py-4 rounded-xl text-base font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 inline-flex items-center gap-2">
                     Expandir Minha Rede Soberana <i class="fa-solid fa-arrow-right"></i>
                 </a>
@@ -837,7 +886,7 @@
                         <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-900 dark:text-white font-bold text-xl">1</div>
                         <div>
                             <h4 class="text-xl font-bold text-slate-900">Baixar & Criar Conta</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">O cliente baixa o app de uma Exchange confiável (como Binance ou Coinbase). O cadastro é rápido, validado por IA em minutos.</p>
+                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">O cliente baixa o app de uma <span class="tooltip-trigger">Exchange<span class="tooltip-box">Corretora de criptomoedas (ex: Binance) para trocar Reais por Cripto.</span></span> confiável (como Binance ou Coinbase). O cadastro é rápido, validado por IA em minutos.</p>
                         </div>
                     </div>
                     <div class="flex gap-6">
@@ -851,7 +900,7 @@
                         <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-brand-usdt text-white shadow-lg shadow-green-200 dark:shadow-none flex items-center justify-center font-bold text-xl">3</div>
                         <div>
                             <h4 class="text-xl font-bold text-slate-900">Pagamento & Desconto</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Ele escaneia seu QR Code no balcão e envia. Você recebe na hora, sem taxas, e ele ganha o desconto do spread.</p>
+                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Ele escaneia seu QR Code no balcão e envia. Você recebe na hora, sem taxas, e ele ganha o desconto do <span class="tooltip-trigger">spread<span class="tooltip-box">Diferença entre preço de compra e venda. Bancos cobram spread alto; cripto tem spread mínimo.</span></span>.</p>
                         </div>
                     </div>
                 </div>
@@ -872,7 +921,7 @@
                                 <p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">Maior Exchange Global</p>
                             </div>
                         </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">A plataforma mais popular do mundo. Ideal para quem busca liquidez máxima e funcionalidades avançadas de conversão P2P.</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">A plataforma mais popular do mundo. Ideal para quem busca liquidez máxima e funcionalidades avançadas de conversão <span class="tooltip-trigger">P2P<span class="tooltip-box">Ponto a Ponto. Transação direta entre pessoas.</span></span>.</p>
                         <div class="flex gap-3">
                             <a href="https://apps.apple.com/us/app/binance-buy-bitcoin-crypto/id1436799971" target="_blank" class="flex-1 bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 text-white py-2.5 rounded-lg text-xs font-bold text-center flex items-center justify-center gap-2 transition">
                                 <i class="fa-brands fa-apple text-base"></i> App Store
@@ -920,8 +969,8 @@
             <div class="space-y-4">
                 <details class="group clean-card p-0"><summary class="flex justify-between items-center font-medium cursor-pointer p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-t-2xl text-sm md:text-base"><span>Minha empresa só vai aceitar Criptomoedas?</span><i class="fa-solid fa-plus text-slate-300 group-open:rotate-45 transition-transform"></i></summary><div class="px-4 md:px-6 pb-4 md:pb-6 text-sm text-slate-500 leading-relaxed"><p>Não. A SoberaniaBiz funciona como uma <strong>camada extra</strong> (Infraestrutura Paralela). Seu sistema bancário e maquininhas atuais continuam funcionando normalmente. Nós apenas adicionamos a capacidade de receber em Bitcoin e USDT (Dólar Digital), dando mais opções ao cliente e reduzindo custos, sem substituir sua operação atual.</p></div></details>
                 <details class="group clean-card p-0"><summary class="flex justify-between items-center font-medium cursor-pointer p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-t-2xl text-sm md:text-base"><span>E se o valor da cripto cair (Volatilidade)?</span><i class="fa-solid fa-plus text-slate-300 group-open:rotate-45 transition-transform"></i></summary><div class="px-4 md:px-6 pb-4 md:pb-6 text-sm text-slate-500 leading-relaxed"><p>Fique tranquilo. A maior parte das transações é feita em <strong>USDT</strong>, pareada com o Dólar, sem volatilidade. Você recebe $100 dólares e continua tendo $100 dólares, protegendo seu poder de compra.</p></div></details>
-                <details class="group clean-card p-0"><summary class="flex justify-between items-center font-medium cursor-pointer p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-t-2xl text-sm md:text-base"><span>Quanto custa para implementar o sistema?</span><i class="fa-solid fa-plus text-slate-300 group-open:rotate-45 transition-transform"></i></summary><div class="px-4 md:px-6 pb-4 md:pb-6 text-sm text-slate-500 leading-relaxed"><p><strong>Custo Zero.</strong> Adotamos o modelo "Skin in the Game". Assumimos todos os custos de setup, treinamento e configuração. Nossa remuneração é de apenas 5% sobre o sucesso (volume transacionado). Se você não vender, nós não ganhamos.</p></div></details>
-                <details class="group clean-card p-0"><summary class="flex justify-between items-center font-medium cursor-pointer p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-t-2xl text-sm md:text-base"><span>É difícil para meus funcionários operarem?</span><i class="fa-solid fa-plus text-slate-300 group-open:rotate-45 transition-transform"></i></summary><div class="px-4 md:px-6 pb-4 md:pb-6 text-sm text-slate-500 leading-relaxed"><p>É extremamente simples. O processo no caixa leva segundos: digitar o valor, gerar o QR Code e conferir o recebimento na tela. Nossa consultoria inclui o treinamento completo da equipe (Onboarding).</p></div></details>
+                <details class="group clean-card p-0"><summary class="flex justify-between items-center font-medium cursor-pointer p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-t-2xl text-sm md:text-base"><span>Quanto custa para implementar o sistema?</span><i class="fa-solid fa-plus text-slate-300 group-open:rotate-45 transition-transform"></i></summary><div class="px-4 md:px-6 pb-4 md:pb-6 text-sm text-slate-500 leading-relaxed"><p><strong>Custo Zero.</strong> Adotamos o modelo "Skin in the Game". Assumimos todos os custos de setup, treinamento e configuração. Nossa remuneração segue uma tabela regressiva: começa em 5% e pode cair para até 1% conforme seu volume de vendas aumenta. Se você não vender, nós não ganhamos nada.</p></div></details>
+                <details class="group clean-card p-0"><summary class="flex justify-between items-center font-medium cursor-pointer p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-t-2xl text-sm md:text-base"><span>É difícil para meus funcionários operarem?</span><i class="fa-solid fa-plus text-slate-300 group-open:rotate-45 transition-transform"></i></summary><div class="px-4 md:px-6 pb-4 md:pb-6 text-sm text-slate-500 leading-relaxed"><p>É extremamente simples. O processo no caixa leva segundos: digitar o valor, gerar o QR Code e conferir o recebimento na tela. Nossa consultoria inclui o treinamento completo da equipe (<span class="tooltip-trigger">Onboarding<span class="tooltip-box">Treinamento e introdução da equipe ao sistema.</span></span>).</p></div></details>
                 <details class="group clean-card p-0"><summary class="flex justify-between items-center font-medium cursor-pointer p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-t-2xl text-sm md:text-base"><span>Como eu uso esse dinheiro no mundo real?</span><i class="fa-solid fa-plus text-slate-300 group-open:rotate-45 transition-transform"></i></summary><div class="px-4 md:px-6 pb-4 md:pb-6 text-sm text-slate-500 leading-relaxed"><p>Você tem total liberdade. Pode converter para Reais via PIX instantâneo em corretoras, usar cartões internacionais (Visa/Master) carregados com seu saldo crypto, ou realizar pagamentos P2P para fornecedores.</p></div></details>
                 <details class="group clean-card p-0"><summary class="flex justify-between items-center font-medium cursor-pointer p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-t-2xl text-sm md:text-base"><span>É legal receber em Cripto no Brasil?</span><i class="fa-solid fa-plus text-slate-300 group-open:rotate-45 transition-transform"></i></summary><div class="px-4 md:px-6 pb-4 md:pb-6 text-sm text-slate-500 leading-relaxed"><p>Sim, 100% legal. A Receita Federal reconhece criptoativos como bens digitais. A operação é uma permuta entre ativos e mercadorias/serviços, perfeitamente regulamentada.</p></div></details>
                 <details class="group clean-card p-0"><summary class="flex justify-between items-center font-medium cursor-pointer p-4 md:p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-t-2xl text-sm md:text-base"><span>Preciso trocar de contador?</span><i class="fa-solid fa-plus text-slate-300 group-open:rotate-45 transition-transform"></i></summary><div class="px-4 md:px-6 pb-4 md:pb-6 text-sm text-slate-500 leading-relaxed"><p>Não. Nossa infraestrutura roda em paralelo ao seu sistema tradicional. Fornecemos os relatórios necessários para que seu contador atual faça os lançamentos contábeis corretamente.</p></div></details>
@@ -952,7 +1001,7 @@
                             <span class="text-4xl md:text-5xl font-extrabold text-brand-usdt">R$ 0,00</span>
                             <span class="text-slate-500 font-medium text-lg">/ Setup</span>
                         </div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">Modelo "Success Fee": Taxa única de 5% retida automaticamente via Smart Contract apenas quando houver vendas.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Modelo <span class="tooltip-trigger">"Success Fee"<span class="tooltip-box">Taxa de Êxito. Só cobramos se você tiver resultado.</span></span> Dinâmico: Taxa inicial de 5% que reduz automaticamente conforme seu faturamento cresce (Tier 1: 5% -> Tier 2: 3% -> Tier 3: 1%).</p>
                     </div>
 
                     <!-- Lista de Entregáveis -->
@@ -962,7 +1011,7 @@
                         <div class="flex gap-4">
                             <div class="shrink-0 w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400"><i class="fa-solid fa-shield-cat"></i></div>
                             <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Protocolo de Custódia Privada</h4>
+                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Protocolo de <span class="tooltip-trigger">Custódia Privada<span class="tooltip-box">Você mantém o controle das chaves de acesso ao seu dinheiro.</span></span></h4>
                                 <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Implementamos sua infraestrutura de recebimento. Você detém o controle absoluto, sem depender de validação de terceiros para movimentar seu próprio capital.</p>
                             </div>
                         </div>
@@ -971,7 +1020,7 @@
                         <div class="flex gap-4">
                             <div class="shrink-0 w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-brand-usdt"><i class="fa-solid fa-chart-line"></i></div>
                             <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Acesso a Ações Globais (Tokenizadas)</h4>
+                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Acesso a Ações Globais (<span class="tooltip-trigger">Tokenizadas<span class="tooltip-box">Ativos reais (como ações) convertidos em tokens digitais para negociação global.</span></span>)</h4>
                                 <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Use seu saldo em cripto para investir diretamente em ações da <strong>Apple, Nvidia, S&P 500</strong> e outras. Acesse o mercado global sem burocracia, mantendo os ativos na sua carteira privada.</p>
                             </div>
                         </div>
@@ -980,8 +1029,8 @@
                         <div class="flex gap-4">
                             <div class="shrink-0 w-10 h-10 rounded-full bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-building-columns"></i></div>
                             <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Liquidez: Oficial & P2P</h4>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Estruturamos o saque via Exchange para <strong>compliance total com a Receita</strong>, e ensinamos rotas P2P descentralizadas (ex: HodlHodl) para quando a privacidade e a agilidade forem prioridade.</p>
+                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Liquidez: Oficial & <span class="tooltip-trigger">P2P<span class="tooltip-box">Ponto a Ponto. Transação direta entre pessoas.</span></span></h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Estruturamos o saque via <span class="tooltip-trigger">Exchange<span class="tooltip-box">Corretora de criptomoedas (ex: Binance) para trocar Reais por Cripto.</span></span> para <strong>compliance total com a Receita</strong>, e ensinamos rotas P2P descentralizadas (ex: HodlHodl) para quando a privacidade e a agilidade forem prioridade.</p>
                             </div>
                         </div>
 
@@ -1057,7 +1106,7 @@
                         <span class="text-[10px] bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-1 rounded-full uppercase tracking-widest font-bold">Fintech DAO</span>
                     </span>
                     <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6 max-w-md">
-                        Operamos como uma <strong>DAO (Decentralized Autonomous Organization)</strong>, redefinindo a arquitetura financeira corporativa. Utilizamos <em>Smart Contracts</em> auditados na Blockchain para garantir governança transparente e execução <em>trustless</em>. Nossa missão é fornecer uma infraestrutura Web3 robusta, permitindo que empresas transcendam o sistema bancário legado e alcancem soberania econômica real através de ativos digitais descentralizados.
+                        Operamos como uma <strong>DAO (<span class="tooltip-trigger">Decentralized Autonomous Organization<span class="tooltip-box">Organização Autônoma Descentralizada. Uma empresa regida por código, sem chefes centrais.</span></span>)</strong>, redefinindo a arquitetura financeira corporativa. Utilizamos <em><span class="tooltip-trigger">Smart Contracts<span class="tooltip-box">Contratos Inteligentes. Código autoexecutável que garante o cumprimento das regras sem advogados.</span></span></em> auditados na <span class="tooltip-trigger">Blockchain<span class="tooltip-box">Livro-razão digital público e imutável onde todas as transações de cripto são registradas.</span></span> para garantir governança transparente e execução <span class="tooltip-trigger">trustless<span class="tooltip-box">"Sem necessidade de confiança". O sistema funciona matematicamente, sem depender da honestidade humana.</span></span>. Nossa missão é fornecer uma <span class="tooltip-trigger">infraestrutura Web3<span class="tooltip-box">A nova internet descentralizada baseada em Blockchain.</span></span> robusta, permitindo que empresas transcendam o sistema bancário legado e alcancem soberania econômica real através de ativos digitais descentralizados.
                     </p>
                     <div class="flex gap-4">
                         <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-brand-btc hover:border-brand-btc transition-colors"><i class="fa-brands fa-instagram"></i></a>
@@ -1080,10 +1129,10 @@
                 <div>
                     <h4 class="font-bold text-slate-900 dark:text-white mb-6">Governança & Legal</h4>
                     <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
-                        <li><a href="#" class="hover:text-brand-btc transition-colors">Termos de Uso (Smart Contract)</a></li>
+                        <li><a href="#" class="hover:text-brand-btc transition-colors">Termos de Uso (<span class="tooltip-trigger">Smart Contract<span class="tooltip-box">Contrato Inteligente. Regras imutáveis de uso do serviço.</span></span>)</a></li>
                         <li><a href="#" class="hover:text-brand-btc transition-colors">Política de Privacidade</a></li>
                         <li><a href="#" class="hover:text-brand-btc transition-colors">Relatório de Transparência</a></li>
-                        <li><a href="#" class="hover:text-brand-btc transition-colors">Compliance IN 1.888</a></li>
+                        <li><a href="#" class="hover:text-brand-btc transition-colors"><span class="tooltip-trigger">Compliance<span class="tooltip-box">Conformidade legal. Seguimos todas as normas da Receita Federal.</span></span> IN 1.888</a></li>
                     </ul>
                 </div>
             </div>
@@ -1115,7 +1164,7 @@
 
                                 <div>
                                     <strong class="text-slate-800 dark:text-slate-200">Privacidade e Autocustódia:</strong>
-                                    A SoberaniaBiz fornece infraestrutura de Autocustódia (Self-Custody). Garantimos a privacidade tecnológica das suas transações, pois não custodiamos seus ativos.
+                                    A SoberaniaBiz fornece infraestrutura de <span class="tooltip-trigger">Autocustódia (Self-Custody)<span class="tooltip-box">Você mantém o controle das chaves de acesso ao seu dinheiro.</span></span>. Garantimos a privacidade tecnológica das suas transações, pois não custodiamos seus ativos.
                                 </div>
 
                                 <p class="italic text-slate-500 dark:text-slate-500 border-l-2 border-brand-btc pl-4 py-1">
@@ -1172,17 +1221,37 @@
                     setTimeout(() => wt.remove(), 500); 
                 }); 
             }
+
+            // --- TOOLTIP MOBILE LOGIC ---
+            // Adiciona lógica para mostrar/esconder tooltips no toque (mobile)
+            const tooltipTriggers = document.querySelectorAll('.tooltip-trigger');
+            tooltipTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    // Previne comportamento padrão se necessário, mas aqui queremos apenas toggle
+                    e.stopPropagation();
+                    // Fecha outros abertos
+                    tooltipTriggers.forEach(t => {
+                        if(t !== trigger) t.classList.remove('active');
+                    });
+                    trigger.classList.toggle('active');
+                });
+            });
+
+            // Fecha tooltip ao clicar fora
+            document.addEventListener('click', () => {
+                tooltipTriggers.forEach(t => t.classList.remove('active'));
+            });
         });
 
         // News Logic (REORDENADA)
         const curatedNews = [
-            { source: "Valor Econômico", date: "Semana passada", title: "BC confirma: Stablecoins reduzem custos de transação em 80%", snippet: "Relatório de eficiência do Banco Central aponta vantagens claras no uso de moedas digitais lastreadas para o varejo.", icon: "fa-solid fa-chart-line", color: "text-green-600" },
-            { source: "Forbes Money", date: "Há 2 dias", title: "BlackRock lança fundo tokenizado e reforça estratégia em ativos digitais", snippet: "A maior gestora de ativos do mundo confirma: a tokenização é o próximo passo da evolução do mercado financeiro global.", icon: "fa-solid fa-newspaper", color: "text-slate-900" },
+            { source: "Valor Econômico", date: "Semana passada", title: "BC confirma: <span class='tooltip-trigger'>Stablecoins<span class='tooltip-box'>Criptomoedas de valor estável, geralmente pareadas 1:1 com o Dólar.</span></span> reduzem custos de transação em 80%", snippet: "Relatório de eficiência do Banco Central aponta vantagens claras no uso de moedas digitais lastreadas para o varejo.", icon: "fa-solid fa-chart-line", color: "text-green-600" },
+            { source: "Forbes Money", date: "Há 2 dias", title: "BlackRock lança fundo <span class='tooltip-trigger'>tokenizado<span class='tooltip-box'>Ativos reais convertidos em tokens digitais na Blockchain.</span></span> e reforça estratégia em ativos digitais", snippet: "A maior gestora de ativos do mundo confirma: a tokenização é o próximo passo da evolução do mercado financeiro global.", icon: "fa-solid fa-newspaper", color: "text-slate-900" },
             { source: "Visa News", date: "Recente", title: "Visa expande liquidação com USDT na rede Solana", snippet: "Gigante de pagamentos integra Dólar Digital para acelerar transações globais corporativas com liquidez imediata.", icon: "fa-brands fa-cc-visa", color: "text-blue-600" },
-            { source: "Stripe Press", date: "Hoje", title: "Stripe reativa pagamentos globais com Stablecoins", snippet: "A maior processadora de pagamentos da internet volta a integrar crypto, permitindo que empresas recebam em Dólar Digital instantaneamente.", icon: "fa-brands fa-stripe", color: "text-indigo-600" },
+            { source: "Stripe Press", date: "Hoje", title: "Stripe reativa pagamentos globais com <span class='tooltip-trigger'>Stablecoins<span class='tooltip-box'>Criptomoedas de valor estável, geralmente pareadas 1:1 com o Dólar.</span></span>", snippet: "A maior processadora de pagamentos da internet volta a integrar crypto, permitindo que empresas recebam em Dólar Digital instantaneamente.", icon: "fa-brands fa-stripe", color: "text-indigo-600" },
             { source: "Bloomberg Línea", date: "Recente", title: "Wall Street valida reservas do Tether (USDT)", snippet: "Cantor Fitzgerald, gigante financeira de NY, confirma que o USDT possui lastro integral, garantindo segurança institucional ao ativo.", icon: "fa-solid fa-building-columns", color: "text-slate-800" },
-            { source: "J.P. Morgan Onyx", date: "Há 1 dia", title: "J.P. Morgan liquida US$ 1 Bilhão diariamente via Blockchain", snippet: "O maior banco dos EUA utiliza tecnologia de ledger distribuído (JPM Coin) para agilizar pagamentos transfronteiriços institucionais.", icon: "fa-solid fa-money-bill-transfer", color: "text-blue-800" },
-            { source: "SWIFT", date: "Ontem", title: "SWIFT avança em testes de interoperabilidade Blockchain", snippet: "O sistema bancário global prepara infraestrutura para integrar ativos tokenizados à rede financeira tradicional.", icon: "fa-solid fa-globe", color: "text-indigo-600" },
+            { source: "J.P. Morgan Onyx", date: "Há 1 dia", title: "J.P. Morgan liquida US$ 1 Bilhão diariamente via <span class='tooltip-trigger'>Ledger<span class='tooltip-box'>Livro-razão digital distribuído onde as transações são registradas.</span></span>", snippet: "O maior banco dos EUA utiliza tecnologia de ledger distribuído (JPM Coin) para agilizar pagamentos transfronteiriços institucionais.", icon: "fa-solid fa-money-bill-transfer", color: "text-blue-800" },
+            { source: "SWIFT", date: "Ontem", title: "SWIFT avança em testes de interoperabilidade <span class='tooltip-trigger'>Blockchain<span class='tooltip-box'>Livro-razão digital público e imutável onde todas as transações de cripto são registradas.</span></span>", snippet: "O sistema bancário global prepara infraestrutura para integrar ativos tokenizados à rede financeira tradicional.", icon: "fa-solid fa-globe", color: "text-indigo-600" },
             { source: "Mastercard News", date: "Recente", title: "Mastercard lança rede 'Multi-Token' para ativos digitais", snippet: "Nova infraestrutura conecta depósitos bancários tradicionais a Stablecoins reguladas, criando uma ponte segura para o sistema financeiro.", icon: "fa-brands fa-cc-mastercard", color: "text-red-600" },
             { source: "Chainalysis", date: "Há 3 dias", title: "América Latina lidera adoção de cripto para proteção patrimonial", snippet: "Relatório aponta que empresas latinas usam stablecoins massivamente para fugir da inflação local.", icon: "fa-solid fa-shield-halved", color: "text-orange-500" }
         ];
@@ -1200,7 +1269,20 @@
                     card.style.animationDelay = `${index * 200}ms`;
                     card.innerHTML = `<div class="flex items-center justify-between mb-4"><div class="flex items-center gap-3"><i class="${news.icon} text-xl ${news.color}"></i><span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">${news.source}</span></div><span class="text-[10px] text-slate-400 bg-slate-50 dark:bg-slate-700 dark:text-slate-300 px-2 py-1 rounded">${news.date}</span></div><h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 leading-snug">${news.title}</h3><p class="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-3">${news.snippet}</p><div class="flex items-center text-xs font-bold text-brand-dark dark:text-white group mt-auto">Ler matéria completa <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i></div>`;
                     container.appendChild(card);
-                    setTimeout(() => { card.classList.remove('opacity-0', 'translate-x-4'); }, 50 + (index * 150));
+                    // Re-bind tooltips for dynamically added content
+                    setTimeout(() => { 
+                        card.classList.remove('opacity-0', 'translate-x-4'); 
+                        // Mobile tooltip fix for dynamic elements
+                        const newTooltips = card.querySelectorAll('.tooltip-trigger');
+                        newTooltips.forEach(trigger => {
+                            trigger.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                const allTooltips = document.querySelectorAll('.tooltip-trigger');
+                                allTooltips.forEach(t => { if(t !== trigger) t.classList.remove('active'); });
+                                trigger.classList.toggle('active');
+                            });
+                        });
+                    }, 50 + (index * 150));
                 });
             }, 1000);
         }
