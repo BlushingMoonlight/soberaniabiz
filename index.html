@@ -3,37 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- --- SEO & METADATA (Padrão AVX) --- -->
+    <meta name="theme-color" content="#0F172A">
+
+    <!-- --- SEO & METADATA (Otimizado) --- -->
     <title>SoberaniaBiz | Engenharia Financeira & Dolarização de Caixa</title>
     <meta name="description" content="Transforme sua empresa em uma fortaleza financeira. Receba em Dólar Digital (USDT), elimine taxas bancárias e proteja seu lucro com total compliance fiscal.">
     <meta name="keywords" content="engenharia financeira, dolarização, usdt, tether, criptomoedas empresas, proteção patrimonial, compliance fiscal, automação financeira, blockchain corporativa">
     <meta name="author" content="SoberaniaBiz DAO">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0F172A"> <!-- Cor da barra do navegador no mobile -->
 
-    <!-- Open Graph (WhatsApp/LinkedIn/Facebook) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://soberania.biz/">
     <meta property="og:title" content="SoberaniaBiz | Dolarize seu Caixa. Elimine o Banco.">
     <meta property="og:description" content="Infraestrutura financeira de nova geração para empresas. Receba em USDT, tenha liquidez imediata e proteção total contra inflação.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?q=80&w=2074&auto=format&fit=crop">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
+    <!-- Stylesheets & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"> <!-- Loading assíncrono do FontAwesome -->
+    
+    <!-- Scripts (Deferred for Performance) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             darkMode: 'class', 
@@ -48,17 +45,13 @@
                             light: '#F8FAFC', 
                         }
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     boxShadow: {
                         'fintech': '0 20px 40px -10px rgba(0, 0, 0, 0.05)',
                         'subtle': '0 2px 10px rgba(0,0,0,0.03)',
                         'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
                     },
-                    screens: {
-                        'xs': '375px', 
-                    },
+                    screens: { 'xs': '375px' },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
@@ -68,131 +61,16 @@
         }
     </script>
     
+    <!-- Custom CSS -->
     <style>
-        body {
-            background-color: #FFFFFF;
-            color: #334155; 
-            transition: background-color 0.3s ease, color 0.3s ease;
-            -webkit-tap-highlight-color: transparent; /* Remove highlight azul no mobile */
-        }
-        
-        /* Dark Mode Global Overrides */
-        .dark body {
-            background-color: #020617; 
-            color: #94A3B8; 
-        }
+        /* Base & Reset */
+        body { background-color: #FFFFFF; color: #334155; transition: background-color 0.3s ease, color 0.3s ease; -webkit-tap-highlight-color: transparent; }
+        .dark body { background-color: #020617; color: #94A3B8; }
+        h1, h2, h3, h4 { color: #0F172A; letter-spacing: -0.02em; transition: color 0.3s ease; }
+        .dark h1, .dark h2, .dark h3, .dark h4, .dark .text-slate-900 { color: #F8FAFC !important; }
+        .dark .text-slate-500, .dark .text-slate-600, .dark .text-slate-700 { color: #94A3B8 !important; }
 
-        h1, h2, h3, h4 {
-            color: #0F172A; 
-            letter-spacing: -0.02em; 
-            transition: color 0.3s ease;
-        }
-
-        .dark h1, .dark h2, .dark h3, .dark h4, .dark .text-slate-900 {
-            color: #F8FAFC !important; 
-        }
-        
-        .dark .text-slate-500, .dark .text-slate-600, .dark .text-slate-700 {
-            color: #94A3B8 !important;
-        }
-
-        /* Tooltip Styles - Otimizado Mobile */
-        .tooltip-trigger {
-            border-bottom: 1px dashed #94a3b8;
-            cursor: help;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .tooltip-box {
-            visibility: hidden;
-            width: max-content;
-            max-width: 250px; /* Limite para telas pequenas */
-            background-color: #0f172a;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 10px 12px;
-            position: absolute;
-            z-index: 100;
-            bottom: 140%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.2s, bottom 0.2s;
-            font-size: 0.75rem;
-            line-height: 1.4;
-            font-weight: 500;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-            pointer-events: none;
-            white-space: normal; /* Permite quebra de linha */
-        }
-
-        .tooltip-box::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #0f172a transparent transparent transparent;
-        }
-
-        /* Show tooltip logic */
-        .tooltip-trigger:hover .tooltip-box,
-        .tooltip-trigger.active .tooltip-box {
-            visibility: visible;
-            opacity: 1;
-            bottom: 125%;
-        }
-
-        /* Hero Background */
-        .hero-bg {
-            background-color: #FFFFFF;
-            background-image: 
-                linear-gradient(to right, 
-                    #FFFFFF 30%, 
-                    rgba(255, 255, 255, 0.9) 60%, 
-                    rgba(255, 255, 255, 0) 100%),
-                url('https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?q=80&w=2074&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center 20%; 
-            background-repeat: no-repeat;
-            transition: background-image 0.5s ease;
-        }
-
-        .dark .hero-bg {
-            background-color: #020617;
-            background-image: 
-                linear-gradient(to right, 
-                    #020617 30%, 
-                    rgba(2, 6, 23, 0.95) 60%, 
-                    rgba(2, 6, 23, 0) 100%),
-                url('https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?q=80&w=2074&auto=format&fit=crop');
-        }
-        
-        @media (max-width: 768px) {
-            .hero-bg {
-                background-position: 70% center; 
-                background-image: 
-                    linear-gradient(to bottom, 
-                        rgba(255, 255, 255, 0.95) 0%, 
-                        rgba(255, 255, 255, 0.8) 50%,
-                        rgba(255, 255, 255, 0.4) 100%),
-                    url('https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?q=80&w=2074&auto=format&fit=crop');
-            }
-            .dark .hero-bg {
-                background-image: 
-                    linear-gradient(to bottom, 
-                        rgba(2, 6, 23, 0.95) 0%, 
-                        rgba(2, 6, 23, 0.9) 50%,
-                        rgba(2, 6, 23, 0.5) 100%),
-                    url('https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?q=80&w=2074&auto=format&fit=crop');
-            }
-        }
-
-        /* Elements */
+        /* Components */
         .btn-primary { background-color: #0F172A; color: white; transition: all 0.3s ease; }
         .btn-primary:hover { background-color: #334155; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15); }
         .dark .btn-primary { background-color: #F8FAFC; color: #0F172A; }
@@ -215,10 +93,10 @@
         .modern-input:focus { background-color: #FFFFFF; border-color: #0F172A; outline: none; box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.05); }
         .dark .modern-input { background-color: #1E293B; border-color: #334155; color: #F8FAFC; }
         .dark .modern-input:focus { background-color: #0F172A; border-color: #94A3B8; }
-        
+
+        /* Utilities */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
-
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #F8FAFC; }
         ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
@@ -227,11 +105,21 @@
         .hide-scroll::-webkit-scrollbar { display: none; }
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* WhatsApp */
+        /* Tooltips (Optimized Mobile) */
+        .tooltip-trigger { border-bottom: 1px dashed #94a3b8; cursor: help; position: relative; display: inline-block; }
+        .tooltip-box { visibility: hidden; width: max-content; max-width: 250px; background-color: #0f172a; color: #fff; text-align: center; border-radius: 8px; padding: 10px 12px; position: absolute; z-index: 100; bottom: 140%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.2s, bottom 0.2s; font-size: 0.75rem; line-height: 1.4; font-weight: 500; box-shadow: 0 10px 25px rgba(0,0,0,0.25); pointer-events: none; white-space: normal; }
+        .tooltip-box::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #0f172a transparent transparent transparent; }
+        .tooltip-trigger:hover .tooltip-box, .tooltip-trigger.active .tooltip-box { visibility: visible; opacity: 1; bottom: 125%; }
+
+        /* Hero Background */
+        .hero-bg { background-color: #FFFFFF; background-image: linear-gradient(to right, #FFFFFF 30%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0) 100%), url('https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?q=80&w=2074&auto=format&fit=crop'); background-size: cover; background-position: center 20%; background-repeat: no-repeat; transition: background-image 0.5s ease; }
+        .dark .hero-bg { background-color: #020617; background-image: linear-gradient(to right, #020617 30%, rgba(2, 6, 23, 0.95) 60%, rgba(2, 6, 23, 0) 100%), url('https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?q=80&w=2074&auto=format&fit=crop'); }
+        @media (max-width: 768px) { .hero-bg { background-position: 70% center; background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.4) 100%), url('https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?q=80&w=2074&auto=format&fit=crop'); } .dark .hero-bg { background-image: linear-gradient(to bottom, rgba(2, 6, 23, 0.95) 0%, rgba(2, 6, 23, 0.9) 50%, rgba(2, 6, 23, 0.5) 100%), url('https://images.unsplash.com/photo-1564659907532-6b5f98c8e70f?q=80&w=2074&auto=format&fit=crop'); } }
+
+        /* Floating WhatsApp */
         .avx-whatsapp-fab { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25D366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: avx-pulse-whatsapp 2.5s ease-in-out infinite; transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
         .avx-whatsapp-fab:hover { transform: scale(1.1); box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.4); }
         @keyframes avx-pulse-whatsapp { 0% { transform: scale(1); box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); } 50% { transform: scale(1.05); box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.4); } 100% { transform: scale(1); box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); } }
-
         .whatsapp-tooltip { position: fixed; bottom: 110px; right: 40px; background-color: white; padding: 15px 20px; border-radius: 12px; border-bottom-right-radius: 0; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 999; max-width: 280px; opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; border: 1px solid rgba(0,0,0,0.05); }
         .dark .whatsapp-tooltip { background-color: #1E293B; border-color: #334155; }
         .dark .whatsapp-tooltip p { color: #F8FAFC !important; }
@@ -1095,6 +983,23 @@
         </div>
     </section>
 
+    <!-- Contato -->
+    <section id="contato" class="py-12 md:py-24 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Agende uma Análise</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm md:text-base mb-6">Faça parte da revolução financeira global. Junte-se a milhões de usuários que já utilizam Stablecoins.</p>
+            </div>
+            <form class="space-y-4 bg-white dark:bg-slate-900 p-6 md:p-8 rounded-3xl shadow-subtle border border-slate-100 dark:border-slate-800 transition-colors">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-2">Nome</label><input type="text" class="modern-input w-full px-4 py-3"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-2">WhatsApp</label><input type="text" class="modern-input w-full px-4 py-3"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-2">Setor</label><select class="modern-input w-full px-4 py-3"><option>Varejo</option><option>Serviços</option><option>Indústria</option></select></div>
+                <button type="button" class="w-full btn-primary py-4 rounded-xl font-bold mt-4">Iniciar Atendimento</button>
+                <p class="text-xs text-center text-slate-400 dark:text-slate-500 mt-4 flex justify-center items-center gap-2"><i class="fa-solid fa-lock"></i> Dados criptografados ponta a ponta.</p>
+            </form>
+        </div>
+    </section>
+
     <!-- Footer Institucional & Legal -->
     <footer class="bg-slate-50 dark:bg-slate-950 pt-16 pb-8 border-t border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -1192,69 +1097,20 @@
     <div id="whatsapp-tooltip" class="whatsapp-tooltip"><p class="text-sm font-medium text-gray-800">Olá! <br>Posso ajudar em seu projeto?</p><button id="close-whatsapp-tooltip" class="absolute -top-2 -right-2 bg-gray-200 rounded-full p-1 text-gray-500 hover:bg-gray-300"><i data-lucide="x" class="w-3 h-3"></i></button></div>
 
     <script>
-        // --- Dark Mode Logic ---
+        // --- JS OTIMIZADO PARA PERFORMANCE ---
+        
+        // Dark Mode Logic
         function toggleDarkMode() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         }
 
-        // Initialize based on preference, default to light
+        // Initialize Theme
         if (localStorage.theme === 'dark') {
             document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
         }
 
-        // --- WHATSAPP TOOLTIP LOGIC ---
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            const wt = document.getElementById('whatsapp-tooltip'), wc = document.getElementById('close-whatsapp-tooltip');
-            if(wt && wc) { 
-                setTimeout(() => wt.classList.add('show'), 3000); 
-                wc.addEventListener('click', (e) => { 
-                    e.stopPropagation(); 
-                    wt.classList.remove('show'); 
-                    setTimeout(() => wt.remove(), 500); 
-                }); 
-            }
-
-            // --- MOBILE MENU LOGIC IMPROVED ---
-            // Close mobile menu when a link is clicked
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            const mm = document.getElementById('mobile-menu');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mm.classList.add('hidden');
-                });
-            });
-
-            // --- TOOLTIP MOBILE LOGIC ---
-            // Adiciona lógica para mostrar/esconder tooltips no toque (mobile)
-            const tooltipTriggers = document.querySelectorAll('.tooltip-trigger');
-            tooltipTriggers.forEach(trigger => {
-                trigger.addEventListener('click', (e) => {
-                    // Previne comportamento padrão se necessário, mas aqui queremos apenas toggle
-                    e.stopPropagation();
-                    // Fecha outros abertos
-                    tooltipTriggers.forEach(t => {
-                        if(t !== trigger) t.classList.remove('active');
-                    });
-                    trigger.classList.toggle('active');
-                });
-            });
-
-            // Fecha tooltip ao clicar fora
-            document.addEventListener('click', () => {
-                tooltipTriggers.forEach(t => t.classList.remove('active'));
-            });
-        });
-
-        // News Logic (REORDENADA)
+        // News Data
         const curatedNews = [
             { source: "Valor Econômico", date: "Semana passada", title: "BC confirma: <span class='tooltip-trigger'>Stablecoins<span class='tooltip-box'>Criptomoedas de valor estável, geralmente pareadas 1:1 com o Dólar.</span></span> reduzem custos de transação em 80%", snippet: "Relatório de eficiência do Banco Central aponta vantagens claras no uso de moedas digitais lastreadas para o varejo.", icon: "fa-solid fa-chart-line", color: "text-green-600" },
             { source: "Forbes Money", date: "Há 2 dias", title: "BlackRock lança fundo <span class='tooltip-trigger'>tokenizado<span class='tooltip-box'>Ativos reais convertidos em tokens digitais na Blockchain.</span></span> e reforça estratégia em ativos digitais", snippet: "A maior gestora de ativos do mundo confirma: a tokenização é o próximo passo da evolução do mercado financeiro global.", icon: "fa-solid fa-newspaper", color: "text-slate-900" },
@@ -1271,172 +1127,137 @@
             const container = document.getElementById('news-container');
             const loading = document.getElementById('news-loading');
             if(!container || !loading) return;
+
+            // Otimização: DocumentFragment para minimizar reflows
+            const fragment = document.createDocumentFragment();
             
+            curatedNews.forEach((news, index) => {
+                const card = document.createElement('div');
+                card.className = "clean-card p-6 min-w-[300px] md:min-w-[350px] news-card opacity-0 transform translate-x-4 transition-all duration-700 ease-out hover:shadow-lg cursor-pointer snap-center";
+                card.style.animationDelay = `${index * 200}ms`;
+                card.innerHTML = `<div class="flex items-center justify-between mb-4"><div class="flex items-center gap-3"><i class="${news.icon} text-xl ${news.color}"></i><span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">${news.source}</span></div><span class="text-[10px] text-slate-400 bg-slate-50 dark:bg-slate-700 dark:text-slate-300 px-2 py-1 rounded">${news.date}</span></div><h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 leading-snug">${news.title}</h3><p class="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-3">${news.snippet}</p><div class="flex items-center text-xs font-bold text-brand-dark dark:text-white group mt-auto">Ler matéria completa <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i></div>`;
+                fragment.appendChild(card);
+            });
+
             setTimeout(() => {
-                loading.style.display = 'none'; container.classList.remove('hidden');
-                curatedNews.forEach((news, index) => {
-                    const card = document.createElement('div');
-                    card.className = "clean-card p-6 min-w-[300px] md:min-w-[350px] news-card opacity-0 transform translate-x-4 transition-all duration-700 ease-out hover:shadow-lg cursor-pointer snap-center";
-                    card.style.animationDelay = `${index * 200}ms`;
-                    card.innerHTML = `<div class="flex items-center justify-between mb-4"><div class="flex items-center gap-3"><i class="${news.icon} text-xl ${news.color}"></i><span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">${news.source}</span></div><span class="text-[10px] text-slate-400 bg-slate-50 dark:bg-slate-700 dark:text-slate-300 px-2 py-1 rounded">${news.date}</span></div><h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 leading-snug">${news.title}</h3><p class="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-3">${news.snippet}</p><div class="flex items-center text-xs font-bold text-brand-dark dark:text-white group mt-auto">Ler matéria completa <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i></div>`;
-                    container.appendChild(card);
-                    // Re-bind tooltips for dynamically added content
-                    setTimeout(() => { 
-                        card.classList.remove('opacity-0', 'translate-x-4'); 
-                        // Mobile tooltip fix for dynamic elements
+                loading.style.display = 'none';
+                container.classList.remove('hidden');
+                container.appendChild(fragment);
+                
+                // Animate entrance
+                const cards = container.children;
+                Array.from(cards).forEach((card, i) => {
+                     setTimeout(() => { 
+                        card.classList.remove('opacity-0', 'translate-x-4');
+                        // Re-bind tooltips for dynamic content
                         const newTooltips = card.querySelectorAll('.tooltip-trigger');
                         newTooltips.forEach(trigger => {
                             trigger.addEventListener('click', (e) => {
                                 e.stopPropagation();
-                                const allTooltips = document.querySelectorAll('.tooltip-trigger');
-                                allTooltips.forEach(t => { if(t !== trigger) t.classList.remove('active'); });
+                                document.querySelectorAll('.tooltip-trigger').forEach(t => t !== trigger && t.classList.remove('active'));
                                 trigger.classList.toggle('active');
                             });
                         });
-                    }, 50 + (index * 150));
+                     }, 50 + (i * 150));
                 });
-            }, 1000);
+            }, 500);
         }
 
-        // --- CHART JS IMPLEMENTATION ---
+        // --- CHART JS (Lazy Loaded Logic) ---
         function initCharts() {
-            // Chart 1: Volume Comparison (Stablecoins vs Visa vs Mastercard)
-            // Data Source: Visual Capitalist / Voronoi (2024 Estimates)
+            const commonOptions = { responsive: true, maintainAspectRatio: false };
+            
+            // Chart 1
             const ctxVolume = document.getElementById('volumeChart');
-            if (ctxVolume) {
+            if (ctxVolume && window.Chart) {
                 new Chart(ctxVolume, {
                     type: 'bar',
                     data: {
                         labels: ['Visa', 'Stablecoins', 'Mastercard'],
                         datasets: [{
                             label: 'Volume Anual (Trilhões USD)',
-                            data: [15.7, 18.4, 9.8], // Real data from 2024
-                            backgroundColor: [
-                                '#1A1F71', // Visa Blue
-                                '#10B981', // Brand USDT Green
-                                '#EB001B'  // Mastercard Red
-                            ],
-                            borderRadius: 8,
-                            borderSkipped: false,
+                            data: [15.7, 18.4, 9.8],
+                            backgroundColor: ['#1A1F71', '#10B981', '#EB001B'],
+                            borderRadius: 8, borderSkipped: false
                         }]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return '$ ' + context.raw + ' Trilhões';
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: { color: 'rgba(0,0,0,0.05)' },
-                                ticks: { font: { family: 'Inter' } }
-                            },
-                            x: {
-                                grid: { display: false },
-                                ticks: { font: { family: 'Inter', weight: 'bold' } }
-                            }
-                        }
-                    }
+                    options: { ...commonOptions, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { beginAtZero: true } } }
                 });
             }
 
-            // Chart 2: Tether Reserves Composition
-            // Data Source: Tether Transparency Report / Cantor Fitzgerald
+            // Chart 2
             const ctxReserves = document.getElementById('reservesChart');
-            if (ctxReserves) {
+            if (ctxReserves && window.Chart) {
                 new Chart(ctxReserves, {
                     type: 'doughnut',
                     data: {
                         labels: ['T-Bills & Cash (Seguro)', 'Outros Investimentos'],
-                        datasets: [{
-                            data: [85, 15],
-                            backgroundColor: [
-                                '#10B981', // Brand USDT Green
-                                '#F7931A'  // Brand BTC/Other Orange
-                            ],
-                            borderWidth: 0,
-                            hoverOffset: 4
-                        }]
+                        datasets: [{ data: [85, 15], backgroundColor: ['#10B981', '#F7931A'], borderWidth: 0, hoverOffset: 4 }]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '75%',
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    usePointStyle: true,
-                                    font: { size: 10, family: 'Inter' },
-                                    padding: 20
-                                }
-                            }
-                        }
-                    }
+                    options: { ...commonOptions, cutout: '75%', plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, font: { size: 10, family: 'Inter' }, padding: 20 } } } }
                 });
             }
 
-            // Chart 3: Bitcoin vs Gold Market Cap Potential
-            // Data Source: 8marketcap.com (Gold ~$14T, BTC ~$2T)
+            // Chart 3
             const ctxBtcGold = document.getElementById('bitcoinProjectionChart');
-            if (ctxBtcGold) {
+            if (ctxBtcGold && window.Chart) {
                 new Chart(ctxBtcGold, {
                     type: 'bar',
                     data: {
                         labels: ['Ouro', 'S&P 500', 'Bitcoin'],
                         datasets: [{
                             label: 'Performance 5 anos (%)',
-                            data: [83, 86, 973], // Data provided by user
-                            backgroundColor: [
-                                '#FFD700', // Gold Yellow
-                                '#1E40AF', // S&P 500 Blue
-                                '#F7931A'  // BTC Orange
-                            ],
-                            borderRadius: 8,
-                            barThickness: 40,
+                            data: [83, 86, 973],
+                            backgroundColor: ['#FFD700', '#1E40AF', '#F7931A'],
+                            borderRadius: 8, barThickness: 40
                         }]
                     },
                     options: {
-                        indexAxis: 'x', // Vertical bar chart
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return '+' + context.raw + '%';
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                grid: { color: 'rgba(0,0,0,0.05)' },
-                                ticks: { font: { family: 'Inter', weight: 'bold' } }
-                            },
-                            y: {
-                                grid: { display: true },
-                                ticks: { font: { family: 'Inter' } }
-                            }
-                        }
+                        ...commonOptions, indexAxis: 'x',
+                        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => '+' + c.raw + '%' } } },
+                        scales: { x: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { family: 'Inter', weight: 'bold' } } }, y: { display: true } }
                     }
                 });
             }
         }
 
-        window.onload = function() { 
-            renderNews(); 
-            initCharts(); // Initialize charts
-        };
+        // --- INIT (DOMContentLoaded for Safety) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.lucide) lucide.createIcons();
+            
+            renderNews();
+            
+            // Wait for Chart.js to load (since it is deferred)
+            const checkChart = setInterval(() => {
+                if (window.Chart) {
+                    initCharts();
+                    clearInterval(checkChart);
+                }
+            }, 100);
+
+            // Mobile Menu Logic
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const mm = document.getElementById('mobile-menu');
+            mobileLinks.forEach(link => link.addEventListener('click', () => mm.classList.add('hidden')));
+
+            // Tooltips Logic
+            const tooltipTriggers = document.querySelectorAll('.tooltip-trigger');
+            tooltipTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    tooltipTriggers.forEach(t => { if(t !== trigger) t.classList.remove('active'); });
+                    trigger.classList.toggle('active');
+                });
+            });
+            document.addEventListener('click', () => tooltipTriggers.forEach(t => t.classList.remove('active')));
+
+            // WhatsApp Tooltip Logic
+            const wt = document.getElementById('whatsapp-tooltip'), wc = document.getElementById('close-whatsapp-tooltip');
+            if(wt && wc) { 
+                setTimeout(() => wt.classList.add('show'), 3000); 
+                wc.addEventListener('click', (e) => { e.stopPropagation(); wt.classList.remove('show'); setTimeout(() => wt.remove(), 500); }); 
+            }
+        });
     </script>
 </body>
 </html>
