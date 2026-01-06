@@ -50,6 +50,7 @@
                         'fintech': '0 20px 40px -10px rgba(0, 0, 0, 0.05)',
                         'subtle': '0 2px 10px rgba(0,0,0,0.03)',
                         'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        'glow': '0 0 20px rgba(16, 185, 129, 0.3)',
                     },
                     screens: { 'xs': '375px' },
                     animation: {
@@ -895,88 +896,122 @@
                 </p>
             </div>
 
-            <!-- O Card do Plano -->
-            <div class="max-w-4xl mx-auto relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-brand-usdt to-brand-dark rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                <div class="relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-2xl">
+            <!-- O Card do Plano - REDESIGNED -->
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Glow Effect -->
+                <div class="absolute -inset-1 bg-gradient-to-r from-brand-btc via-brand-usdt to-brand-dark rounded-3xl blur opacity-30 animate-pulse-slow"></div>
+                
+                <div class="relative bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row">
                     
-                    <!-- Header do Card -->
-                    <div class="bg-slate-50 dark:bg-slate-800/50 p-8 md:p-10 border-b border-slate-100 dark:border-slate-800 text-center">
-                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Plano de Implementação Soberana (Lifetime)</h3>
-                        <div class="flex items-center justify-center gap-2 mt-4 mb-2">
-                            <span class="text-4xl md:text-5xl font-extrabold text-brand-usdt">R$ 0,00</span>
-                            <span class="text-slate-500 font-medium text-lg">/ Setup</span>
+                    <!-- Left Side: The Hook (Price & Promise) -->
+                    <div class="md:w-2/5 bg-slate-900 text-white p-10 flex flex-col justify-between relative overflow-hidden">
+                        <!-- Background pattern/decoration -->
+                        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-brand-usdt rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+                        <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-brand-btc rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            
+                        <div class="relative z-10">
+                            <div class="inline-block px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs font-bold uppercase tracking-widest mb-6">
+                                Lifetime Access
+                            </div>
+                            <h3 class="text-3xl font-bold mb-2">Implementação <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-btc to-yellow-200">Soberana</span></h3>
+                            <p class="text-slate-400 text-sm mb-8">Infraestrutura bancária completa sem o custo do banco.</p>
+                            
+                            <div class="mb-8">
+                                <span class="text-6xl font-extrabold tracking-tighter">Free</span>
+                                <span class="text-xl text-slate-400 block mt-2">Custo de Setup: R$ 0,00</span>
+                            </div>
+            
+                            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                                <p class="text-xs text-slate-300 uppercase font-bold mb-2">Modelo Success Fee Dinâmico</p>
+                                <div class="flex justify-between items-end text-sm">
+                                    <div class="text-center opacity-60">
+                                        <div class="h-8 w-full bg-brand-btc/30 rounded-t mb-1 mx-auto" style="width: 4px;"></div>
+                                        5%
+                                    </div>
+                                    <div class="text-center opacity-80">
+                                        <div class="h-12 w-full bg-brand-btc/60 rounded-t mb-1 mx-auto" style="width: 4px;"></div>
+                                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                    </div>
+                                    <div class="text-center font-bold text-brand-usdt">
+                                        <div class="h-16 w-full bg-brand-usdt rounded-t mb-1 mx-auto" style="width: 6px;"></div>
+                                        1%
+                                    </div>
+                                </div>
+                                <p class="text-[10px] text-slate-400 mt-2 text-center">A taxa cai conforme você fatura.</p>
+                            </div>
                         </div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">Modelo <span class="tooltip-trigger">"Success Fee"<span class="tooltip-box">Taxa de Êxito. Só cobramos se você tiver resultado.</span></span> Dinâmico: Taxa inicial de 5% que reduz automaticamente conforme seu faturamento cresce (Tier 1: 5% -> Tier 2: 3% -> Tier 3: 1%).</p>
+            
+                        <div class="relative z-10 mt-8">
+                           <p class="text-xs text-slate-400 flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-brand-usdt"></i> Garantia de Risco Zero
+                           </p>
+                        </div>
                     </div>
-
-                    <!-- Lista de Entregáveis -->
-                    <div class="p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
-                        
-                        <!-- Item 1: Cold Wallet -->
-                        <div class="flex gap-4">
-                            <div class="shrink-0 w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400"><i class="fa-solid fa-shield-cat"></i></div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Protocolo de <span class="tooltip-trigger">Custódia Privada<span class="tooltip-box">Você mantém o controle das chaves de acesso ao seu dinheiro.</span></span></h4>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Implementamos sua infraestrutura de recebimento. Você detém o controle absoluto, sem depender de validação de terceiros para movimentar seu próprio capital.</p>
+            
+                    <!-- Right Side: The Value (Features) -->
+                    <div class="md:w-3/5 p-10 bg-white dark:bg-slate-900">
+                         <!-- Features Grid -->
+                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-6">
+                            <!-- Feature 1 -->
+                            <div class="flex gap-4">
+                                <div class="shrink-0 w-10 h-10 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-brand-btc"><i class="fa-solid fa-key"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Protocolo de <span class="tooltip-trigger">Custódia Privada<span class="tooltip-box">Você mantém o controle das chaves de acesso ao seu dinheiro.</span></span></h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Controle absoluto. Sem bloqueios judiciais.</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Item 2: Investimentos -->
-                        <div class="flex gap-4">
-                            <div class="shrink-0 w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-brand-usdt"><i class="fa-solid fa-chart-line"></i></div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Acesso a Ações Globais (<span class="tooltip-trigger">Tokenizadas<span class="tooltip-box">Ativos reais (como ações) convertidos em tokens digitais para negociação global.</span></span>)</h4>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Use seu saldo em cripto para investir diretamente em ações da <strong>Apple, Nvidia, S&P 500</strong> e outras. Acesse o mercado global sem burocracia, mantendo os ativos na sua carteira privada.</p>
+                            <!-- Feature 2 -->
+                            <div class="flex gap-4">
+                                <div class="shrink-0 w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400"><i class="fa-solid fa-globe"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Ações Globais (<span class="tooltip-trigger">Tokenizadas<span class="tooltip-box">Ativos reais (como ações) convertidos em tokens digitais para negociação global.</span></span>)</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Apple, Tesla, S&P500 na sua carteira.</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Item 3: Off-Ramp -->
-                        <div class="flex gap-4">
-                            <div class="shrink-0 w-10 h-10 rounded-full bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-building-columns"></i></div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Liquidez: Oficial & <span class="tooltip-trigger">P2P<span class="tooltip-box">Ponto a Ponto. Transação direta entre pessoas.</span></span></h4>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Estruturamos o saque via <span class="tooltip-trigger">Exchange<span class="tooltip-box">Corretora de criptomoedas (ex: Binance) para trocar Reais por Cripto.</span></span> para <strong>compliance total com a Receita</strong>, e ensinamos rotas P2P descentralizadas (ex: HodlHodl) para quando a privacidade e a agilidade forem prioridade.</p>
+                            <!-- Feature 3 -->
+                            <div class="flex gap-4">
+                                <div class="shrink-0 w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-brand-usdt"><i class="fa-solid fa-right-left"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Liquidez Híbrida</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed"><span class="tooltip-trigger">Exchange<span class="tooltip-box">Corretora de criptomoedas (ex: Binance) para trocar Reais por Cripto.</span></span> oficial & Rotas <span class="tooltip-trigger">P2P<span class="tooltip-box">Ponto a Ponto. Transação direta entre pessoas.</span></span> anônimas.</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Item 4: PDV -->
-                        <div class="flex gap-4">
-                            <div class="shrink-0 w-10 h-10 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-brand-btc"><i class="fa-solid fa-cash-register"></i></div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Operação de Caixa Segura</h4>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Configuramos carteiras de "apenas leitura" para sua equipe. O funcionário confere o recebimento na hora, mas não tem permissão técnica para realizar saques.</p>
+                            <!-- Feature 4 -->
+                            <div class="flex gap-4">
+                                <div class="shrink-0 w-10 h-10 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-brand-btc"><i class="fa-solid fa-cash-register"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Caixa Blindado</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Carteiras "Watch-only" para funcionários.</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Item 5: Suporte -->
-                        <div class="flex gap-4">
-                            <div class="shrink-0 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300"><i class="fa-solid fa-headset"></i></div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Suporte Técnico Dedicado</h4>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Não é apenas software, é parceria. Oferecemos canal direto para suporte operacional, resolução de dúvidas e manutenção da infraestrutura de segurança da sua empresa.</p>
+                            <!-- Feature 5 -->
+                            <div class="flex gap-4">
+                                <div class="shrink-0 w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600 dark:text-purple-400"><i class="fa-solid fa-headset"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Suporte "White Glove"</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Canal direto de engenharia financeira.</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Item 6: Pós-Venda -->
-                        <div class="flex gap-4">
-                            <div class="shrink-0 w-10 h-10 rounded-full bg-teal-50 dark:bg-teal-900/20 flex items-center justify-center text-teal-600 dark:text-teal-400"><i class="fa-solid fa-chalkboard-user"></i></div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white mb-1">Assessoria Contínua</h4>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Acompanhamento vip pós-implementação. Monitoramos as primeiras transações e treinamos novos funcionários, garantindo que sua operação rode lisa e sem fricção.</p>
+                            <!-- Feature 6 -->
+                            <div class="flex gap-4">
+                                <div class="shrink-0 w-10 h-10 rounded-full bg-cyan-50 dark:bg-cyan-900/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400"><i class="fa-solid fa-chart-line"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Assessoria de Crescimento</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Acompanhamento pós-setup vitalício.</p>
+                                </div>
                             </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Footer do Card -->
-                    <div class="p-8 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div class="text-xs text-slate-500 dark:text-slate-400 max-w-sm">
-                            <i class="fa-solid fa-circle-info mr-1"></i> Garantia de suporte pós-implementação inclusa. Acompanhamos suas primeiras transações reais.
-                        </div>
-                        <a href="#contato" class="btn-primary w-full md:w-auto px-8 py-4 rounded-xl font-bold shadow-lg whitespace-nowrap">
-                            Iniciar Implementação Gratuita
-                        </a>
+                         </div>
+            
+                         <!-- Bottom CTA -->
+                         <div class="mt-10 pt-8 border-t border-slate-100 dark:border-slate-800">
+                            <a href="#contato" class="btn-primary w-full py-5 rounded-xl text-lg font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 group">
+                                Iniciar Implementação Gratuita
+                                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <p class="text-center text-xs text-slate-400 mt-3 flex justify-center items-center gap-2">
+                                <i class="fa-solid fa-lock text-[10px]"></i> Vagas limitadas para acompanhamento VIP este mês.
+                            </p>
+                         </div>
                     </div>
                 </div>
             </div>
