@@ -127,7 +127,8 @@
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
         /* Tooltips (Optimized Mobile & Positioning) */
-        .tooltip-trigger { border-bottom: 1px dashed #94a3b8; cursor: help; position: relative; display: inline-block; }
+        /* CORREÇÃO: display alterado de inline-block para inline para corrigir quebra de linha em parênteses */
+        .tooltip-trigger { border-bottom: 1px dashed #94a3b8; cursor: help; position: relative; display: inline; }
         .tooltip-box { 
             visibility: hidden; 
             width: max-content; 
@@ -1157,10 +1158,12 @@
                 
                 <!-- Coluna 1: Sobre a DAO -->
                 <div class="col-span-1 lg:col-span-2">
-                    <span class="font-bold text-2xl text-slate-900 dark:text-white tracking-tight flex items-center gap-2 mb-6">
-                        Soberania<span class="text-slate-400 font-normal">Biz</span>
-                        <span class="text-[10px] bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-1 rounded-full uppercase tracking-widest font-bold">Fintech DAO</span>
-                    </span>
+                    <!-- CORREÇÃO: Estrutura HTML do Logo para evitar separação por flexbox e texto "Fintech" removido -->
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="font-bold text-2xl text-slate-900 dark:text-white tracking-tight">Soberania<span class="text-slate-400 font-normal">Biz</span></span>
+                        <span class="text-[10px] bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-1 rounded-full uppercase tracking-widest font-bold">DAO</span>
+                    </div>
+
                     <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6 max-w-md">
                         Operamos como uma <strong>DAO (<span class="tooltip-trigger">Decentralized Autonomous Organization<span class="tooltip-box">Organização Autônoma Descentralizada. Uma empresa regida por código, sem chefes centrais.</span></span>)</strong>, redefinindo a arquitetura financeira corporativa. Utilizamos <em><span class="tooltip-trigger">Smart Contracts<span class="tooltip-box">Contratos Inteligentes. Código autoexecutável que garante o cumprimento das regras sem advogados.</span></span></em> auditados na <span class="tooltip-trigger">Blockchain<span class="tooltip-box">Livro-razão digital público e imutável onde todas as transações de cripto são registradas.</span></span> para garantir governança transparente e execução <span class="tooltip-trigger">trustless<span class="tooltip-box">"Sem necessidade de confiança". O sistema funciona matematicamente, sem depender da honestidade humana.</span></span>. Nossa missão é fornecer uma <span class="tooltip-trigger">infraestrutura Web3<span class="tooltip-box">A nova internet descentralizada baseada em Blockchain.</span></span> robusta, permitindo que empresas transcendam o sistema bancário legado e alcancem soberania econômica real através de ativos digitais descentralizados.
                     </p>
