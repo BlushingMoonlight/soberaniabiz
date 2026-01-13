@@ -568,14 +568,14 @@
                          <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
                         <div class="flex justify-between items-center mb-6 relative z-10">
                             <h4 class="font-bold text-white text-sm uppercase tracking-wide flex items-center gap-2">
-                                <i class="fa-solid fa-arrow-trend-up text-red-500"></i> Dólar vs Real (BRL)
+                                <i class="fa-solid fa-arrow-trend-down text-red-500"></i> Desvalorização do Real (1994-2034)
                             </h4>
-                            <span class="text-[10px] bg-red-500/20 text-red-300 border border-red-500/30 px-2 py-1 rounded font-mono">10 Anos</span>
+                            <span class="text-[10px] bg-red-500/20 text-red-300 border border-red-500/30 px-2 py-1 rounded font-mono">Histórico & Projeção</span>
                         </div>
                         <div class="h-48 relative z-10">
                             <canvas id="brlDevaluationChart"></canvas>
                         </div>
-                        <p class="text-center text-xs text-slate-400 mt-4 relative z-10">Visualização da perda de poder de compra do Real frente ao Dólar.</p>
+                        <p class="text-center text-xs text-slate-400 mt-4 relative z-10">O gráfico invertido demonstra a perda contínua de valor de compra da moeda local.</p>
                     </div>
                 </div>
 
@@ -1415,16 +1415,16 @@
                 });
             }
 
-            // Chart 3 (NEW: BRL Devaluation)
+            // Chart 3 (NEW: BRL Devaluation - INVERTED)
             const ctxBrl = document.getElementById('brlDevaluationChart');
             if (ctxBrl && window.Chart) {
                 new Chart(ctxBrl, {
                     type: 'line',
                     data: {
-                        labels: ['2014', '2016', '2018', '2020', '2022', '2024'],
+                        labels: ['1994', '2000', '2005', '2010', '2015', '2020', '2024', '2034 (Prev.)'],
                         datasets: [{
                             label: 'Preço do Dólar (R$)',
-                            data: [2.35, 3.40, 3.80, 5.20, 5.20, 5.75],
+                            data: [1.00, 1.95, 2.30, 1.70, 3.90, 5.20, 5.75, 10.50], // Data matches historical trend + projection
                             borderColor: '#EF4444', // Red for danger/alert
                             backgroundColor: 'rgba(239, 68, 68, 0.1)',
                             borderWidth: 2,
@@ -1438,7 +1438,12 @@
                         plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => 'R$ ' + c.raw } } },
                         scales: { 
                             x: { grid: { display: false, color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94A3B8' } }, 
-                            y: { display: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8' } } 
+                            y: { 
+                                display: true, 
+                                reverse: true, // INVERTED AXIS: Makes graph go "down" visually as value increases
+                                grid: { color: 'rgba(255,255,255,0.05)' }, 
+                                ticks: { color: '#94A3B8' } 
+                            } 
                         }
                     }
                 });
